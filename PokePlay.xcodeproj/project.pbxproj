@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E442A312787006BC32F /* PokePlayApp.swift */; };
-		28B71E472A312787006BC32F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E462A312787006BC32F /* ContentView.swift */; };
+		28B71E472A312787006BC32F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E462A312787006BC32F /* SplashScreen.swift */; };
 		28B71E492A312788006BC32F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E482A312788006BC32F /* Assets.xcassets */; };
 		28B71E4C2A312788006BC32F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E4B2A312788006BC32F /* Preview Assets.xcassets */; };
 		28B71E562A312788006BC32F /* PokePlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E552A312788006BC32F /* PokePlayTests.swift */; };
 		28B71E602A312788006BC32F /* PokePlayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E5F2A312788006BC32F /* PokePlayUITests.swift */; };
 		28B71E622A312788006BC32F /* PokePlayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E612A312788006BC32F /* PokePlayUITestsLaunchTests.swift */; };
+		28B71E762A313C0F006BC32F /* PokemonStaticData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E752A313C0F006BC32F /* PokemonStaticData.plist */; };
+		28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E772A313D91006BC32F /* StartingScreen.swift */; };
+		28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E792A314580006BC32F /* SelectCharacterScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		28B71E412A312787006BC32F /* PokePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B71E442A312787006BC32F /* PokePlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePlayApp.swift; sourceTree = "<group>"; };
-		28B71E462A312787006BC32F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28B71E462A312787006BC32F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		28B71E482A312788006BC32F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28B71E4B2A312788006BC32F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28B71E512A312788006BC32F /* PokePlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokePlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		28B71E5B2A312788006BC32F /* PokePlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokePlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B71E5F2A312788006BC32F /* PokePlayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePlayUITests.swift; sourceTree = "<group>"; };
 		28B71E612A312788006BC32F /* PokePlayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePlayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		28B71E752A313C0F006BC32F /* PokemonStaticData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PokemonStaticData.plist; sourceTree = "<group>"; };
+		28B71E772A313D91006BC32F /* StartingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreen.swift; sourceTree = "<group>"; };
+		28B71E792A314580006BC32F /* SelectCharacterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacterScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +100,13 @@
 		28B71E432A312787006BC32F /* PokePlay */ = {
 			isa = PBXGroup;
 			children = (
-				28B71E442A312787006BC32F /* PokePlayApp.swift */,
-				28B71E462A312787006BC32F /* ContentView.swift */,
 				28B71E482A312788006BC32F /* Assets.xcassets */,
 				28B71E4A2A312788006BC32F /* Preview Content */,
+				28B71E702A3135A6006BC32F /* Data */,
+				28B71E462A312787006BC32F /* SplashScreen.swift */,
+				28B71E772A313D91006BC32F /* StartingScreen.swift */,
+				28B71E442A312787006BC32F /* PokePlayApp.swift */,
+				28B71E792A314580006BC32F /* SelectCharacterScreen.swift */,
 			);
 			path = PokePlay;
 			sourceTree = "<group>";
@@ -125,6 +134,14 @@
 				28B71E612A312788006BC32F /* PokePlayUITestsLaunchTests.swift */,
 			);
 			path = PokePlayUITests;
+			sourceTree = "<group>";
+		};
+		28B71E702A3135A6006BC32F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				28B71E752A313C0F006BC32F /* PokemonStaticData.plist */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +250,7 @@
 			files = (
 				28B71E4C2A312788006BC32F /* Preview Assets.xcassets in Resources */,
 				28B71E492A312788006BC32F /* Assets.xcassets in Resources */,
+				28B71E762A313C0F006BC32F /* PokemonStaticData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B71E472A312787006BC32F /* ContentView.swift in Sources */,
+				28B71E472A312787006BC32F /* SplashScreen.swift in Sources */,
 				28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */,
+				28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */,
+				28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
