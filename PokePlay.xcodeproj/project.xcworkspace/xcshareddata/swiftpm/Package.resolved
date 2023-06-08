@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
-      "identity" : "flanimatedimage",
+      "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Flipboard/FLAnimatedImage",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "d4f07b6f164d53c1212c3e54d6460738b1981e9f",
-        "version" : "1.0.17"
+        "revision" : "c51ba84499268ea3020e6aee9e229c0f56b9d924",
+        "version" : "5.16.0"
+      }
+    },
+    {
+      "identity" : "sdwebimageswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+      "state" : {
+        "revision" : "e837c37d45449fbd3b4745c10c5b5274e73edead",
+        "version" : "2.2.3"
       }
     }
   ],

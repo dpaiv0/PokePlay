@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SelectCharacterScreen: View {
     @State private var genders = ["Male", "Female"]
@@ -20,7 +21,7 @@ struct SelectCharacterScreen: View {
                     .fontWeight(.bold)
                     .padding(.top, 150.0)
                 
-                AnimatedImageView(fileName: "pkmn-\(gender)")
+                AnimatedImage(url: Bundle.main.url(forResource: "pkmn-\(gender)", withExtension: "gif")!, options: [.progressiveLoad])
                     .frame(width: 200, height: 200, alignment: .center)
                     .foregroundColor(.accentColor)
                 
