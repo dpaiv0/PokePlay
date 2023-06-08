@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashScreen: View {
     @State private var jump = false
-    @State var timeRemaining = 5
+    @State var timeRemaining = 2
     
     var body: some View {
         NavigationStack {

@@ -17,6 +17,17 @@
 		28B71E762A313C0F006BC32F /* PokemonStaticData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E752A313C0F006BC32F /* PokemonStaticData.plist */; };
 		28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E772A313D91006BC32F /* StartingScreen.swift */; };
 		28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E792A314580006BC32F /* SelectCharacterScreen.swift */; };
+		28B71E802A31502F006BC32F /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 28B71E7F2A31502F006BC32F /* FLAnimatedImage */; };
+		28B71E8C2A315A63006BC32F /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E8B2A315A63006BC32F /* AnimatedImageView.swift */; };
+		28B71E962A316057006BC32F /* tall-grass-walking.gif in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E8E2A316045006BC32F /* tall-grass-walking.gif */; };
+		28B71E972A316057006BC32F /* tall-grass-walking-still.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E8F2A316045006BC32F /* tall-grass-walking-still.png */; };
+		28B71E982A316057006BC32F /* pokeplay-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E902A316045006BC32F /* pokeplay-logo.png */; };
+		28B71E992A316057006BC32F /* pkmn-male-still.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E912A316045006BC32F /* pkmn-male-still.png */; };
+		28B71E9A2A316057006BC32F /* pkmn-male.gif in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E922A316045006BC32F /* pkmn-male.gif */; };
+		28B71E9B2A316057006BC32F /* pkmn-female-still.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E932A316045006BC32F /* pkmn-female-still.png */; };
+		28B71E9C2A316057006BC32F /* pkmn-female.gif in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E942A316045006BC32F /* pkmn-female.gif */; };
+		28B71E9D2A316057006BC32F /* question-mark-pixelated.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E952A316045006BC32F /* question-mark-pixelated.png */; };
+		28B71EA02A3161D5006BC32F /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E9F2A3161D5006BC32F /* RadioButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +61,16 @@
 		28B71E752A313C0F006BC32F /* PokemonStaticData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PokemonStaticData.plist; sourceTree = "<group>"; };
 		28B71E772A313D91006BC32F /* StartingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreen.swift; sourceTree = "<group>"; };
 		28B71E792A314580006BC32F /* SelectCharacterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacterScreen.swift; sourceTree = "<group>"; };
+		28B71E8B2A315A63006BC32F /* AnimatedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
+		28B71E8E2A316045006BC32F /* tall-grass-walking.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "tall-grass-walking.gif"; sourceTree = "<group>"; };
+		28B71E8F2A316045006BC32F /* tall-grass-walking-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tall-grass-walking-still.png"; sourceTree = "<group>"; };
+		28B71E902A316045006BC32F /* pokeplay-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pokeplay-logo.png"; sourceTree = "<group>"; };
+		28B71E912A316045006BC32F /* pkmn-male-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pkmn-male-still.png"; sourceTree = "<group>"; };
+		28B71E922A316045006BC32F /* pkmn-male.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pkmn-male.gif"; sourceTree = "<group>"; };
+		28B71E932A316045006BC32F /* pkmn-female-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pkmn-female-still.png"; sourceTree = "<group>"; };
+		28B71E942A316045006BC32F /* pkmn-female.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pkmn-female.gif"; sourceTree = "<group>"; };
+		28B71E952A316045006BC32F /* question-mark-pixelated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question-mark-pixelated.png"; sourceTree = "<group>"; };
+		28B71E9F2A3161D5006BC32F /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B71E802A31502F006BC32F /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +122,9 @@
 		28B71E432A312787006BC32F /* PokePlay */ = {
 			isa = PBXGroup;
 			children = (
+				28B71E9E2A3161B0006BC32F /* Components */,
+				28B71E8D2A316045006BC32F /* Images */,
+				28B71E8A2A315A52006BC32F /* Utils */,
 				28B71E482A312788006BC32F /* Assets.xcassets */,
 				28B71E4A2A312788006BC32F /* Preview Content */,
 				28B71E702A3135A6006BC32F /* Data */,
@@ -144,6 +169,37 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		28B71E8A2A315A52006BC32F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				28B71E8B2A315A63006BC32F /* AnimatedImageView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		28B71E8D2A316045006BC32F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				28B71E8E2A316045006BC32F /* tall-grass-walking.gif */,
+				28B71E8F2A316045006BC32F /* tall-grass-walking-still.png */,
+				28B71E902A316045006BC32F /* pokeplay-logo.png */,
+				28B71E912A316045006BC32F /* pkmn-male-still.png */,
+				28B71E922A316045006BC32F /* pkmn-male.gif */,
+				28B71E932A316045006BC32F /* pkmn-female-still.png */,
+				28B71E942A316045006BC32F /* pkmn-female.gif */,
+				28B71E952A316045006BC32F /* question-mark-pixelated.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		28B71E9E2A3161B0006BC32F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				28B71E9F2A3161D5006BC32F /* RadioButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,6 +216,9 @@
 			dependencies = (
 			);
 			name = PokePlay;
+			packageProductDependencies = (
+				28B71E7F2A31502F006BC32F /* FLAnimatedImage */,
+			);
 			productName = PokePlay;
 			productReference = 28B71E412A312787006BC32F /* PokePlay.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +291,9 @@
 				Base,
 			);
 			mainGroup = 28B71E382A312787006BC32F;
+			packageReferences = (
+				28B71E7E2A31502F006BC32F /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+			);
 			productRefGroup = 28B71E422A312787006BC32F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -248,6 +310,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B71E962A316057006BC32F /* tall-grass-walking.gif in Resources */,
+				28B71E972A316057006BC32F /* tall-grass-walking-still.png in Resources */,
+				28B71E982A316057006BC32F /* pokeplay-logo.png in Resources */,
+				28B71E992A316057006BC32F /* pkmn-male-still.png in Resources */,
+				28B71E9A2A316057006BC32F /* pkmn-male.gif in Resources */,
+				28B71E9B2A316057006BC32F /* pkmn-female-still.png in Resources */,
+				28B71E9C2A316057006BC32F /* pkmn-female.gif in Resources */,
+				28B71E9D2A316057006BC32F /* question-mark-pixelated.png in Resources */,
 				28B71E4C2A312788006BC32F /* Preview Assets.xcassets in Resources */,
 				28B71E492A312788006BC32F /* Assets.xcassets in Resources */,
 				28B71E762A313C0F006BC32F /* PokemonStaticData.plist in Resources */,
@@ -277,6 +347,8 @@
 			files = (
 				28B71E472A312787006BC32F /* SplashScreen.swift in Sources */,
 				28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */,
+				28B71E8C2A315A63006BC32F /* AnimatedImageView.swift in Sources */,
+				28B71EA02A3161D5006BC32F /* RadioButton.swift in Sources */,
 				28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */,
 				28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */,
 			);
@@ -603,6 +675,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		28B71E7E2A31502F006BC32F /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28B71E7F2A31502F006BC32F /* FLAnimatedImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28B71E7E2A31502F006BC32F /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
+			productName = FLAnimatedImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28B71E392A312787006BC32F /* Project object */;
 }
