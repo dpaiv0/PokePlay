@@ -26,6 +26,8 @@
 		28B71E9C2A316057006BC32F /* pkmn-female.gif in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E942A316045006BC32F /* pkmn-female.gif */; };
 		28B71E9D2A316057006BC32F /* question-mark-pixelated.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E952A316045006BC32F /* question-mark-pixelated.png */; };
 		28B71EA32A31F164006BC32F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 28B71EA22A31F164006BC32F /* SDWebImageSwiftUI */; };
+		28B71EA52A3208C4006BC32F /* SelectStarterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71EA42A3208C4006BC32F /* SelectStarterScreen.swift */; };
+		28B71EA72A320E3B006BC32F /* PokeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71EA62A320E3B006BC32F /* PokeUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		28B71E932A316045006BC32F /* pkmn-female-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pkmn-female-still.png"; sourceTree = "<group>"; };
 		28B71E942A316045006BC32F /* pkmn-female.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pkmn-female.gif"; sourceTree = "<group>"; };
 		28B71E952A316045006BC32F /* question-mark-pixelated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question-mark-pixelated.png"; sourceTree = "<group>"; };
+		28B71EA42A3208C4006BC32F /* SelectStarterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStarterScreen.swift; sourceTree = "<group>"; };
+		28B71EA62A320E3B006BC32F /* PokeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				28B71E772A313D91006BC32F /* StartingScreen.swift */,
 				28B71E442A312787006BC32F /* PokePlayApp.swift */,
 				28B71E792A314580006BC32F /* SelectCharacterScreen.swift */,
+				28B71EA42A3208C4006BC32F /* SelectStarterScreen.swift */,
 			);
 			path = PokePlay;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 		28B71E8A2A315A52006BC32F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				28B71EA62A320E3B006BC32F /* PokeUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,6 +349,8 @@
 				28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */,
 				28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */,
 				28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */,
+				28B71EA72A320E3B006BC32F /* PokeUtils.swift in Sources */,
+				28B71EA52A3208C4006BC32F /* SelectStarterScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

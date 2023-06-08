@@ -9,6 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct SelectCharacterScreen: View {
+    @State private var goingToNextScreen = false
     @State private var genders = ["Male", "Female"]
     @AppStorage("name") private var name = ""
     @AppStorage("gender") private var gender = "male"
@@ -16,6 +17,8 @@ struct SelectCharacterScreen: View {
     var body: some View {
         NavigationStack {
             VStack {
+                NavigationLink(destination: SelectStarterScreen().toolbar(.hidden), isActive: $goingToNextScreen) { EmptyView() }
+                
                 Text("Select your character")
                     .font(.title)
                     .fontWeight(.bold)
@@ -26,34 +29,35 @@ struct SelectCharacterScreen: View {
                     .foregroundColor(.accentColor)
                 
                 Form {
-                                Picker("Gender", selection: $gender) {
-                                    ForEach(genders, id: \.self.localizedLowercase) {
-                                        Text($0)
-                                    }
-                                }
-                                .pickerStyle(.segmented)
+                    Picker("Gender", selection: $gender) {
+                        ForEach(genders, id: \.self.localizedLowercase) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.segmented)
                     
                     TextField("Name", text: $name)
-                            }
+                        .autocorrectionDisabled(true)
+                }
                 .foregroundColor(.accentColor)
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)
                 
                 
-                NavigationLink(destination: SelectCharacterScreen().navigationBarHidden(true)) {
-                    Button("Get Started", action: {
-                        // self.goingToNextScreen = true
-                    })
-                        // .padding(.top, 250.0)
-                        .buttonStyle(.borderedProminent)
-                                }
-                
+                Button("Select Your Starter", action: {
+                    if (name.isEmpty) { }
+                    else {
+                        self.goingToNextScreen = true
+                    }
+                })
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty)
             }
-                
-            }
-            .padding()
+            
         }
+        .padding()
     }
+}
 
 
 struct SelectCharacterScreen_Previews: PreviewProvider {

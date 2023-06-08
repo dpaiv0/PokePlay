@@ -14,7 +14,7 @@ struct StartingScreen: View {
         NavigationStack {
             VStack {
                 NavigationLink(destination: SelectCharacterScreen().toolbar(.hidden), isActive: $goingToNextScreen) { EmptyView() }
-
+                
                 
                 Image("pokeplay-logo")
                     .padding(.top, 150.0)
@@ -34,9 +34,9 @@ struct StartingScreen: View {
                     Button("Get Started", action: {
                         self.goingToNextScreen = true
                     })
-                        .padding(.top, 250.0)
-                        .buttonStyle(.borderedProminent)
-                                }
+                    .padding(.top, 250.0)
+                    .buttonStyle(.borderedProminent)
+                }
                 
             }
             .padding()

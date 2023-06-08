@@ -11,6 +11,8 @@ struct SplashScreen: View {
     @State private var jump = false
     @State var timeRemaining = 2
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -18,24 +20,19 @@ struct SplashScreen: View {
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
                     .onReceive(timer) { _ in
-                                            if timeRemaining > 0 {
-                                                timeRemaining -= 1
-                                            } else {
-                                                jump = true
-                                                // optional stop the timer
-                                                timer.upstream.connect().cancel()
-                                            }
-                                        }
+                        if timeRemaining > 0 {
+                            timeRemaining -= 1
+                        } else {
+                            jump = true
+                            timer.upstream.connect().cancel()
+                        }
+                    }
             }
             .padding()
             
             NavigationLink("", destination: StartingScreen().toolbar(.hidden), isActive: $jump)
-
-
         }
     }
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 }
 
 struct SplashScreen_Previews: PreviewProvider {
