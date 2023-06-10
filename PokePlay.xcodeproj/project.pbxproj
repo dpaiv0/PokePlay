@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284633062A349FC800ACECEC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633052A349FC800ACECEC /* Color.swift */; };
+		28A196D92A3496480080AC1D /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196D82A3496480080AC1D /* Pokemon.swift */; };
+		28A196DB2A34968B0080AC1D /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196DA2A34968B0080AC1D /* Stat.swift */; };
+		28A196DD2A3496CA0080AC1D /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196DC2A3496CA0080AC1D /* Move.swift */; };
+		28A196DF2A3496E70080AC1D /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196DE2A3496E70080AC1D /* PokemonType.swift */; };
 		28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E442A312787006BC32F /* PokePlayApp.swift */; };
 		28B71E472A312787006BC32F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71E462A312787006BC32F /* SplashScreen.swift */; };
 		28B71E492A312788006BC32F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B71E482A312788006BC32F /* Assets.xcassets */; };
@@ -48,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284633052A349FC800ACECEC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		28A196D82A3496480080AC1D /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		28A196DA2A34968B0080AC1D /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
+		28A196DC2A3496CA0080AC1D /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		28A196DE2A3496E70080AC1D /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
 		28B71E412A312787006BC32F /* PokePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B71E442A312787006BC32F /* PokePlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokePlayApp.swift; sourceTree = "<group>"; };
 		28B71E462A312787006BC32F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -99,6 +109,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28A196D62A3496380080AC1D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				28A196D82A3496480080AC1D /* Pokemon.swift */,
+				28A196DA2A34968B0080AC1D /* Stat.swift */,
+				28A196DC2A3496CA0080AC1D /* Move.swift */,
+				28A196DE2A3496E70080AC1D /* PokemonType.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		28B71E382A312787006BC32F = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +143,7 @@
 		28B71E432A312787006BC32F /* PokePlay */ = {
 			isa = PBXGroup;
 			children = (
+				28A196D62A3496380080AC1D /* Entities */,
 				28B71E9E2A3161B0006BC32F /* Components */,
 				28B71E8D2A316045006BC32F /* Images */,
 				28B71E8A2A315A52006BC32F /* Utils */,
@@ -174,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				28B71EA62A320E3B006BC32F /* PokeUtils.swift */,
+				284633052A349FC800ACECEC /* Color.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -345,10 +368,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A196D92A3496480080AC1D /* Pokemon.swift in Sources */,
+				28A196DD2A3496CA0080AC1D /* Move.swift in Sources */,
+				284633062A349FC800ACECEC /* Color.swift in Sources */,
+				28A196DB2A34968B0080AC1D /* Stat.swift in Sources */,
 				28B71E472A312787006BC32F /* SplashScreen.swift in Sources */,
 				28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */,
 				28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */,
 				28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */,
+				28A196DF2A3496E70080AC1D /* PokemonType.swift in Sources */,
 				28B71EA72A320E3B006BC32F /* PokeUtils.swift in Sources */,
 				28B71EA52A3208C4006BC32F /* SelectStarterScreen.swift in Sources */,
 			);
