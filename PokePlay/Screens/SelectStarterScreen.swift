@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct SelectStarterScreen: View {
     @AppStorage("starter") private var starter = 0
     @State private var goingToNextScreen = false
+    @Environment(\.colorScheme) var colorScheme
     
     private var starters = [1, 4, 7]
     
@@ -20,7 +21,7 @@ struct SelectStarterScreen: View {
             NavigationLink(destination: HomeScreen().toolbar(.hidden), isActive: $goingToNextScreen) {
                 EmptyView()
             }
-
+            
             VStack {
                 Text("Select your starter")
                     .font(.title)
@@ -43,7 +44,7 @@ struct SelectStarterScreen: View {
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(.black, lineWidth: self.starter == starter ? 5 : 0)
+                                .stroke(colorScheme == .dark ? .white : .black, lineWidth: self.starter == starter ? 5 : 0)
                         )
                         .frame(width: 120, height: 100)
                         .aspectRatio(contentMode: .fit)
@@ -57,6 +58,8 @@ struct SelectStarterScreen: View {
                 Button("Start Your Adventure!", action: {
                     if (starter == 0) { }
                     else {
+                        PokeUtils.AppendPokemonToPokedex(pokemon: PokeUtils.GetPokemonById(id: starter))
+                        
                         self.goingToNextScreen = true
                     }
                 })

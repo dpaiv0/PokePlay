@@ -9,13 +9,31 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct HomeScreen: View {
-    let tabButtonWidth: CGFloat = UIScreen.main.bounds.width / 5
+    let tabButtonWidth: CGFloat = UIScreen.main.bounds.width / 4
     let headerItemWidth: CGFloat = UIScreen.main.bounds.width / 3
     
     @AppStorage("starter") private var starter = 0;
     @AppStorage("gender") private var gender = "";
     @AppStorage("name") private var name = "";
     @AppStorage("currency") private var currency = 100;
+    
+    @State private var screen: String = "wilderness"
+    
+    func GetScreen() -> AnyView {
+        switch screen {
+        case "pokedex":
+            return AnyView(PokedexView(self))
+        case "gyms": break
+            // return AnyView(GymsView())
+        case "wilderness":
+            return AnyView(WildernessView(self))
+        case "pokecenter": break
+            // return AnyView(PokeCenterView())
+        default:
+            return AnyView(Text("Hello, world!"))
+        }
+        return AnyView(Text("Hello, world!"))
+    }
     
     var body: some View {
         VStack {
@@ -52,7 +70,7 @@ struct HomeScreen: View {
             
             // Main Content
             VStack {
-                Text("Main Content")
+                GetScreen()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
@@ -60,25 +78,35 @@ struct HomeScreen: View {
             Divider()
             
             HStack(spacing: 0) {
-                TabButton(title: "Pokédex", iconName: "book.closed.fill")
+                TabButton(title: "Wilderness", iconName: "leaf.fill", selected: screen == "wilderness")
                     .frame(width: tabButtonWidth)
+                    .onTapGesture {
+                        screen = "wilderness"
+                    }
                 
-                TabButton(title: "Gyms", iconName: "building.2.fill")
+                TabButton(title: "Pokédex", iconName: "book.closed.fill", selected: screen == "pokedex")
                     .frame(width: tabButtonWidth)
+                    .onTapGesture {
+                        screen = "pokedex"
+                    }
                 
-                TabButton(title: "Wild", iconName: "leaf.fill", selected: true)
+                TabButton(title: "Gyms", iconName: "building.2.fill", selected: screen == "gyms")
                     .frame(width: tabButtonWidth)
+                    .onTapGesture {
+                        screen = "gyms"
+                    }
                 
-                TabButton(title: "Shop", iconName: "cart.fill")
+                TabButton(title: "Poké Center", iconName: "cross.case.fill", selected: screen == "pokecenter")
                     .frame(width: tabButtonWidth)
-                
-                TabButton(title: "Bag", iconName: "bag.fill")
-                    .frame(width: tabButtonWidth)
+                    .onTapGesture {
+                        screen = "pokecenter"
+                    }
             }
             .frame(maxWidth: .infinity, maxHeight: 50)
         }
     }
 }
+
 
 struct TabButton: View {
     var title: String
