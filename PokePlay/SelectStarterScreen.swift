@@ -26,7 +26,7 @@ struct SelectStarterScreen: View {
                     
                     ForEach(starters, id: \.self) { starter in
                         VStack() {
-                            WebImage(url: PokeUtils.GetPokemonImage(id: starter), options: [.progressiveLoad])
+                            WebImage(url: PokeUtils.GetFrontPokemonSprite(id: starter), options: [.progressiveLoad])
                                 .frame(width: 90, height: 50)
                                 .padding()
                             Text(PokeUtils.GetPokemonById(id: starter).name.capitalized)

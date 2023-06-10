@@ -8,9 +8,9 @@
 import Foundation
 
 struct PokemonType: Codable {
-    var type: TypeDetail
+    let type: TypeDetail
 }
 
 struct TypeDetail: Codable {
-    var name: String
+    let name: String
 }

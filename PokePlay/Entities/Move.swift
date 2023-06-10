@@ -8,10 +8,11 @@
 import Foundation
 
 struct Move: Codable {
-    var move_id: Int
-    var move: MoveDetail
+    let move_id: Int
+    let move: MoveDetail
 }
 
 struct MoveDetail: Codable {
-    var name: String
+    let name: String
+    let power: Int
 }

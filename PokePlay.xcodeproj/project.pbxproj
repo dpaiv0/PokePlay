@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		284633062A349FC800ACECEC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633052A349FC800ACECEC /* Color.swift */; };
+		284633082A34ADF500ACECEC /* EvolutionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633072A34ADF500ACECEC /* EvolutionChain.swift */; };
 		28A196D92A3496480080AC1D /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196D82A3496480080AC1D /* Pokemon.swift */; };
 		28A196DB2A34968B0080AC1D /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196DA2A34968B0080AC1D /* Stat.swift */; };
 		28A196DD2A3496CA0080AC1D /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196DC2A3496CA0080AC1D /* Move.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		284633052A349FC800ACECEC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		284633072A34ADF500ACECEC /* EvolutionChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChain.swift; sourceTree = "<group>"; };
 		28A196D82A3496480080AC1D /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		28A196DA2A34968B0080AC1D /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		28A196DC2A3496CA0080AC1D /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				28A196DA2A34968B0080AC1D /* Stat.swift */,
 				28A196DC2A3496CA0080AC1D /* Move.swift */,
 				28A196DE2A3496E70080AC1D /* PokemonType.swift */,
+				284633072A34ADF500ACECEC /* EvolutionChain.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				28A196DF2A3496E70080AC1D /* PokemonType.swift in Sources */,
 				28B71EA72A320E3B006BC32F /* PokeUtils.swift in Sources */,
 				28B71EA52A3208C4006BC32F /* SelectStarterScreen.swift in Sources */,
+				284633082A34ADF500ACECEC /* EvolutionChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

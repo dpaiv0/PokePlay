@@ -8,11 +8,11 @@
 import Foundation
 
 struct Pokemon: Codable {
-    var id: Int
-    var name: String
-    var height: Int
-    var weight: Int
-    var stats: [Stat]
-    var moves: [Move]
-    var types: [PokemonType]
+    let id: Int
+    let name: String
+    let height: Int
+    let weight: Int
+    let stats: [Stat]
+    let moves: [Move]
+    let types: [PokemonType]
 }

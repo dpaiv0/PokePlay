@@ -7,17 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B3D6A42C-F78F-4EAF-9B86-73658C613886"
-            shouldBeEnabled = "No"
+            uuid = "52CFEF75-C7F6-44DE-BD0E-2AD5EF3029CF"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PokePlay/Utils/PokeUtils.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "GetPokemonById(id:)"
-            landmarkType = "7">
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "PokeUtils"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "52CFEF75-C7F6-44DE-BD0E-2AD5EF3029CF - da24d88e2354c03"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for path"
+                  moduleName = "PokePlay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidpaiva/Documents/Programming/PokePlay/PokePlay/Utils/PokeUtils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "52CFEF75-C7F6-44DE-BD0E-2AD5EF3029CF - d2b55ddd68e25569"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokePlay.PokeUtils.path.unsafeMutableAddressor : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "PokePlay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidpaiva/Documents/Programming/PokePlay/PokePlay/Utils/PokeUtils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

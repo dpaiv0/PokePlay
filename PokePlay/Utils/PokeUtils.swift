@@ -9,22 +9,26 @@ import Foundation
 
 struct PokeUtils {
     static let path = Bundle.main.path(forResource: "PokemonStaticData", ofType: "plist")
-    static let _dict = NSDictionary(contentsOfFile: path ?? "")?.object(forKey: "Pokemon") as? [String: Any] ?? [:]
-    static let dict = _dict["pokemon"] as? [[String: Any]] ?? []
-    static let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
+    static let dict = NSDictionary(contentsOfFile: path ?? "")?.object(forKey: "Pokemon") as? [String: Any] ?? [:]
+    
+    static let pokemonDict = dict["pokemon"] as? [[String: Any]] ?? []
+    static let pokemonData = try? JSONSerialization.data(withJSONObject: pokemonDict, options: [])
+    
+    static let evolutionChainDict = dict["chains"] as? [[String: Any]] ?? []
+    static let evolutionChainData = try? JSONSerialization.data(withJSONObject: evolutionChainDict, options: [])
     
     static func GetPokemonById(id: Int) -> Pokemon {
-        let pokemon = try? JSONDecoder().decode([Pokemon].self, from: data!)
+        let pokemon = try? JSONDecoder().decode([Pokemon].self, from: pokemonData!)
         
         if let matchingPokemon = pokemon?.first(where: { $0.id == id }) {
             return matchingPokemon
         } else {
-            fatalError("Pokémon not found for the given ID.")
+            fatalError("Pokémon not found for the given ID \(id).")
         }
     }
     
     static func GetPokemonByName(name: String) -> Pokemon {
-        let pokemon = try? JSONDecoder().decode([Pokemon].self, from: data!)
+        let pokemon = try? JSONDecoder().decode([Pokemon].self, from: pokemonData!)
         
         if let matchingPokemon = pokemon?.first(where: { $0.name == name.lowercased() }) {
             return matchingPokemon
@@ -77,7 +81,41 @@ struct PokeUtils {
         }
     }
     
-    static func GetPokemonImage(id: Int) -> URL? {
+    static func GetFrontPokemonSprite(id: Int) -> URL? {
         return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(id).png") ?? nil
     }
+    
+    static func GetBackPokemonSprite(id: Int) -> URL? {
+        return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(id).png") ?? nil
+    }
+    
+    static func GetEvolutionChainByPokemon(pokemon: Pokemon) -> EvolutionChain {
+        let evolutionChain = try? JSONDecoder().decode([EvolutionChain].self, from: evolutionChainData!)
+        
+        if let matchingEvolutionChain = evolutionChain?.first(where: {
+            $0.species.contains(where: {
+                $0.id == pokemon.id
+            })
+        }) {
+            return matchingEvolutionChain
+        } else {
+            fatalError("Evolution chain not found for the given Pokémon.")
+        }
+    }
+    
+    static func GetNextEvolutionByPokemon(pokemon: Pokemon) -> Pokemon? {
+        let evolutionChain = GetEvolutionChainByPokemon(pokemon: pokemon)
+        
+        // Get pokémon that's after the current one in the evolution chain
+        if let nextEvolution = evolutionChain.species.first(
+            where: {
+                $0.id == pokemon.id + 1
+            }
+        ) {
+            return GetPokemonByName(name: nextEvolution.name)
+        } else {
+            return nil
+        }
+    }
+    
 }

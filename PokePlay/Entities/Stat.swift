@@ -8,10 +8,10 @@
 import Foundation
 
 struct Stat: Codable {
-    var stat: StatDetail
-    var value: Int
+    let stat: StatDetail
+    let value: Int
 }
 
 struct StatDetail: Codable {
-    var name: String
+    let name: String
 }
