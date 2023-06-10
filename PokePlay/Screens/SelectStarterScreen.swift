@@ -16,6 +16,11 @@ struct SelectStarterScreen: View {
     
     var body: some View {
         NavigationStack {
+            
+            NavigationLink(destination: HomeScreen().toolbar(.hidden), isActive: $goingToNextScreen) {
+                EmptyView()
+            }
+
             VStack {
                 Text("Select your starter")
                     .font(.title)
