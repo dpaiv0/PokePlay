@@ -11,11 +11,10 @@ struct PokeUtils {
     static let path = Bundle.main.path(forResource: "PokemonStaticData", ofType: "plist")
     static let dict = NSDictionary(contentsOfFile: path ?? "")?.object(forKey: "Pokemon") as? [String: Any] ?? [:]
     
+    // Pokémon Data
+    
     static let pokemonDict = dict["pokemon"] as? [[String: Any]] ?? []
     static let pokemonData = try? JSONSerialization.data(withJSONObject: pokemonDict, options: [])
-    
-    static let evolutionChainDict = dict["chains"] as? [[String: Any]] ?? []
-    static let evolutionChainData = try? JSONSerialization.data(withJSONObject: evolutionChainDict, options: [])
     
     static func GetPokemonById(id: Int) -> Pokemon {
         let pokemon = try? JSONDecoder().decode([Pokemon].self, from: pokemonData!)
@@ -89,6 +88,11 @@ struct PokeUtils {
         return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(id).png") ?? nil
     }
     
+    // Evolution Chain Data
+    
+    static let evolutionChainDict = dict["chains"] as? [[String: Any]] ?? []
+    static let evolutionChainData = try? JSONSerialization.data(withJSONObject: evolutionChainDict, options: [])
+    
     static func GetEvolutionChainByPokemon(pokemon: Pokemon) -> EvolutionChain {
         let evolutionChain = try? JSONDecoder().decode([EvolutionChain].self, from: evolutionChainData!)
         
@@ -118,6 +122,8 @@ struct PokeUtils {
         }
     }
     
+    // Pokédex Data
+    
     static func GetPokedexFromUserDefaults() -> Pokedex {
         let defaults = UserDefaults.standard
         let pokedexData = defaults.object(forKey: "pokedex") as? Data ?? Data()
@@ -146,5 +152,55 @@ struct PokeUtils {
         newPokedex.pokemonList.append(pokemon)
         
         SavePokedexToUserDefaults(pokedex: newPokedex)
+    }
+    
+    // Pokémon Team Data
+    
+    static func GetPokemonTeamFromUserDefaults() -> PokemonTeam {
+        let defaults = UserDefaults.standard
+        let pokemonTeamData = defaults.object(forKey: "pokemonTeam") as? Data ?? Data()
+        
+        if let pokemonTeam = try? JSONDecoder().decode(PokemonTeam.self, from: pokemonTeamData) {
+            return pokemonTeam
+        } else {
+            return PokemonTeam(pokemonList: [])
+        }
+    }
+    
+    static func SavePokemonTeamToUserDefaults(pokemonTeam: PokemonTeam) {
+        let defaults = UserDefaults.standard
+        let pokemonTeamData = try? JSONEncoder().encode(pokemonTeam)
+        defaults.set(pokemonTeamData, forKey: "pokemonTeam")
+    }
+    
+    static func AppendPokemonToTeam(pokemon: ComplexPokemon) {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        
+        if pokemonTeam.pokemonList.contains(where: { $0.id == pokemon.id }) {
+            return
+        }
+        
+        var newPokemonTeam = pokemonTeam
+        newPokemonTeam.pokemonList.append(pokemon)
+        
+        SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
+    }
+    
+    static func RemovePokemonFromTeam(pokemon: ComplexPokemon) {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        
+        if !pokemonTeam.pokemonList.contains(where: { $0.id == pokemon.id }) {
+            return
+        }
+        
+        var newPokemonTeam = pokemonTeam
+        newPokemonTeam.pokemonList.removeAll(where: { $0.id == pokemon.id })
+        
+        SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
+    }
+    
+    static func GetPokemonTeamCount() -> Int {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        return pokemonTeam.pokemonList.count
     }
 }

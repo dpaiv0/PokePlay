@@ -58,7 +58,11 @@ struct SelectStarterScreen: View {
                 Button("Start Your Adventure!", action: {
                     if (starter == 0) { }
                     else {
-                        PokeUtils.AppendPokemonToPokedex(pokemon: PokeUtils.GetPokemonById(id: starter))
+                        let starterData = PokeUtils.GetPokemonById(id: starter)
+                        
+                        PokeUtils.AppendPokemonToPokedex(pokemon: starterData)
+                        
+                        PokeUtils.AppendPokemonToTeam(pokemon: ComplexPokemon(id: starterData   .id))
                         
                         self.goingToNextScreen = true
                     }
