@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct PokemonCardSmall: View {
     @State private var pokemon: Pokemon
-    
+
     init(_ pokemon: Pokemon) {
         self.pokemon = pokemon
     }
@@ -27,8 +27,7 @@ struct PokemonCardSmall: View {
     
     func GetImageUrl() -> URL {
         // Check if the pokémon is on the user's Pokédex
-        
-        if let index = PokeUtils.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == pokemon.id }) {
+        if PokeUtils.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == pokemon.id }) != nil {
             return PokeUtils.GetFrontPokemonSprite(id: pokemon.id)!
         } else {
             return Bundle.main.url(forResource: "question-mark-pixelated", withExtension: "png")!

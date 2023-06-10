@@ -32,6 +32,7 @@ struct PokedexView: View {
                         NavigationLink(destination: PokemonDetailsView(PokeUtils.GetPokemonById(id: id))) {
                             PokemonCardSmall(PokeUtils.GetPokemonById(id: id))
                         }
+                        .disabled(PokeUtils.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == id }) == nil)
                     }
                 }
                 .padding(.top, 20)
