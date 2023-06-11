@@ -15,13 +15,27 @@ struct PokemonDetailsView: View {
         self.pokemon = pokemon
     }
     
+    func GetId(_ id: Int) -> String {
+        if (1...9).contains(id) {
+            return "00\(id)"
+        } else if (10...99).contains(id) {
+            return "0\(id)"
+        } else {
+            return "\(id)"
+        }
+    }
+    
     var body: some View {        
         VStack {
-            Text(pokemon.name.capitalized)
-                .font(.title)
+            Text("Pokédex Entry #\(GetId(pokemon.id))")
+                .font(.title3)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
             
+            Text(pokemon.name.capitalized)
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)            
             WebImage(url: PokeUtils.GetFrontPokemonSprite(id: pokemon.id), options: [.progressiveLoad])
                 .frame(width: 200, height: 200)
                 .background(Color(hex: PokeUtils.GetColorForPokemonType(pokemon: pokemon)))
@@ -29,27 +43,24 @@ struct PokemonDetailsView: View {
             
             Text("Type\(pokemon.types.count > 1 ? "s" : ""): \(pokemon.types.map { $0.type.name.capitalized }.joined(separator: ", "))")
                 .font(.title2)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding(.top, 30)
-            
-            Text("Height: \(pokemon.height)")
-                .font(.title2)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding(.top, 30)
-            
-            Text("Weight: \(pokemon.weight)")
-                .font(.title2)
-                .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .padding(.top, 30)
             
             Text("Moves: \(pokemon.moves.map { $0.move.name.replacingOccurrences(of: "-", with: " ").capitalized }.joined(separator: ", "))")
                 .font(.title2)
-                .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-                .padding(.top, 30)
+                .padding(.top, 5)
+                .frame(width: 300)
+            
+            Text("Height: \(pokemon.height)")
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .padding(.top, 5)
+            
+            Text("Weight: \(pokemon.weight)")
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .padding(.top, 5)
         }
     
     }
