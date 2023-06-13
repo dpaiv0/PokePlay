@@ -36,9 +36,9 @@ struct PokemonDetailsView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)            
-            WebImage(url: PokeUtils.GetFrontPokemonSprite(id: pokemon.id), options: [.progressiveLoad])
+            WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: pokemon.id), options: [.progressiveLoad])
                 .frame(width: 200, height: 200)
-                .background(Color(hex: PokeUtils.GetColorForPokemonType(pokemon: pokemon)))
+                .background(Color(hex: PokeUtils.PokemonData.GetColorForPokemonType(pokemon: pokemon)))
                 .cornerRadius(30)
             
             Text("Type\(pokemon.types.count > 1 ? "s" : ""): \(pokemon.types.map { $0.type.name.capitalized }.joined(separator: ", "))")
@@ -68,6 +68,6 @@ struct PokemonDetailsView: View {
 
 struct PokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailsView(PokeUtils.GetPokemonById(id: 1))
+        PokemonDetailsView(PokeUtils.PokemonData.GetPokemonById(id: 1))
     }
 }

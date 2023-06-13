@@ -14,6 +14,11 @@
 		282D98C92A3501680023616F /* PokemonCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D98C82A3501680023616F /* PokemonCardSmall.swift */; };
 		282D98CB2A3506610023616F /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D98CA2A3506610023616F /* PokemonDetailsView.swift */; };
 		282D98CD2A35372A0023616F /* PokemonTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D98CC2A35372A0023616F /* PokemonTeam.swift */; };
+		2841563D2A388E4B00FE5F19 /* PokemonDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841563C2A388E4B00FE5F19 /* PokemonDataUtils.swift */; };
+		2841563F2A388EB400FE5F19 /* EvolutionChainDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841563E2A388EB400FE5F19 /* EvolutionChainDataUtils.swift */; };
+		284156412A388F0C00FE5F19 /* PokedexDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284156402A388F0C00FE5F19 /* PokedexDataUtils.swift */; };
+		284156452A388F4200FE5F19 /* PokemonTeamDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284156442A388F4200FE5F19 /* PokemonTeamDataUtils.swift */; };
+		284156472A38A37B00FE5F19 /* PokemonTeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284156462A38A37B00FE5F19 /* PokemonTeamListView.swift */; };
 		284633062A349FC800ACECEC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633052A349FC800ACECEC /* Color.swift */; };
 		284633082A34ADF500ACECEC /* EvolutionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633072A34ADF500ACECEC /* EvolutionChain.swift */; };
 		28A196D92A3496480080AC1D /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196D82A3496480080AC1D /* Pokemon.swift */; };
@@ -68,6 +73,11 @@
 		282D98C82A3501680023616F /* PokemonCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardSmall.swift; sourceTree = "<group>"; };
 		282D98CA2A3506610023616F /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
 		282D98CC2A35372A0023616F /* PokemonTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeam.swift; sourceTree = "<group>"; };
+		2841563C2A388E4B00FE5F19 /* PokemonDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDataUtils.swift; sourceTree = "<group>"; };
+		2841563E2A388EB400FE5F19 /* EvolutionChainDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainDataUtils.swift; sourceTree = "<group>"; };
+		284156402A388F0C00FE5F19 /* PokedexDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexDataUtils.swift; sourceTree = "<group>"; };
+		284156442A388F4200FE5F19 /* PokemonTeamDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamDataUtils.swift; sourceTree = "<group>"; };
+		284156462A38A37B00FE5F19 /* PokemonTeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamListView.swift; sourceTree = "<group>"; };
 		284633052A349FC800ACECEC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		284633072A34ADF500ACECEC /* EvolutionChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChain.swift; sourceTree = "<group>"; };
 		28A196D82A3496480080AC1D /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
@@ -144,6 +154,7 @@
 				282D98BC2A34E8500023616F /* WildernessView.swift */,
 				282D98C62A3500A50023616F /* PokedexView.swift */,
 				282D98CA2A3506610023616F /* PokemonDetailsView.swift */,
+				284156462A38A37B00FE5F19 /* PokemonTeamListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +166,17 @@
 				282D98CC2A35372A0023616F /* PokemonTeam.swift */,
 			);
 			path = Complex;
+			sourceTree = "<group>";
+		};
+		2841563B2A388E2E00FE5F19 /* DataUtils */ = {
+			isa = PBXGroup;
+			children = (
+				2841563C2A388E4B00FE5F19 /* PokemonDataUtils.swift */,
+				2841563E2A388EB400FE5F19 /* EvolutionChainDataUtils.swift */,
+				284156402A388F0C00FE5F19 /* PokedexDataUtils.swift */,
+				284156442A388F4200FE5F19 /* PokemonTeamDataUtils.swift */,
+			);
+			path = DataUtils;
 			sourceTree = "<group>";
 		};
 		28A196D62A3496380080AC1D /* Entities */ = {
@@ -242,6 +264,7 @@
 		28B71E8A2A315A52006BC32F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2841563B2A388E2E00FE5F19 /* DataUtils */,
 				28B71EA62A320E3B006BC32F /* PokeUtils.swift */,
 				284633052A349FC800ACECEC /* Color.swift */,
 			);
@@ -425,6 +448,7 @@
 				282D98CD2A35372A0023616F /* PokemonTeam.swift in Sources */,
 				28B71E452A312787006BC32F /* PokePlayApp.swift in Sources */,
 				282D98CB2A3506610023616F /* PokemonDetailsView.swift in Sources */,
+				2841563D2A388E4B00FE5F19 /* PokemonDataUtils.swift in Sources */,
 				282D98C72A3500A50023616F /* PokedexView.swift in Sources */,
 				282D98BD2A34E8500023616F /* WildernessView.swift in Sources */,
 				282D98BA2A34BB710023616F /* HomeScreen.swift in Sources */,
@@ -432,8 +456,12 @@
 				28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */,
 				28A196DF2A3496E70080AC1D /* PokemonType.swift in Sources */,
 				282D98C92A3501680023616F /* PokemonCardSmall.swift in Sources */,
+				2841563F2A388EB400FE5F19 /* EvolutionChainDataUtils.swift in Sources */,
 				28B71EA72A320E3B006BC32F /* PokeUtils.swift in Sources */,
+				284156472A38A37B00FE5F19 /* PokemonTeamListView.swift in Sources */,
+				284156452A388F4200FE5F19 /* PokemonTeamDataUtils.swift in Sources */,
 				28B71EA52A3208C4006BC32F /* SelectStarterScreen.swift in Sources */,
+				284156412A388F0C00FE5F19 /* PokedexDataUtils.swift in Sources */,
 				284633082A34ADF500ACECEC /* EvolutionChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

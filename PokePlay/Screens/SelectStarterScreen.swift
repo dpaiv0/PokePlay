@@ -32,15 +32,15 @@ struct SelectStarterScreen: View {
                     
                     ForEach(starters, id: \.self) { starter in
                         VStack() {
-                            WebImage(url: PokeUtils.GetFrontPokemonSprite(id: starter), options: [.progressiveLoad])
+                            WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: starter), options: [.progressiveLoad])
                                 .frame(width: 90, height: 50)
                                 .padding()
-                            Text(PokeUtils.GetPokemonById(id: starter).name.capitalized)
+                            Text(PokeUtils.PokemonData.GetPokemonById(id: starter).name.capitalized)
                                 .font(.title3)
                                 .padding(.bottom, 5)
                         }
                         .foregroundColor(.white)
-                        .background(Color(hex: PokeUtils.GetColorForPokemonType(pokemon: PokeUtils.GetPokemonById(id: starter))))
+                        .background(Color(hex: PokeUtils.PokemonData.GetColorForPokemonType(pokemon: PokeUtils.PokemonData.GetPokemonById(id: starter))))
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
@@ -58,11 +58,13 @@ struct SelectStarterScreen: View {
                 Button("Start Your Adventure!", action: {
                     if (starter == 0) { }
                     else {
-                        let starterData = PokeUtils.GetPokemonById(id: starter)
+                        let starterData = PokeUtils.PokemonData.GetPokemonById(id: starter)
                         
-                        PokeUtils.AppendPokemonToPokedex(pokemon: starterData)
+                        PokeUtils.PokedexData.AppendPokemonToPokedex(pokemon: starterData)
                         
-                        PokeUtils.AppendPokemonToTeam(pokemon: ComplexPokemon(id: starterData   .id))
+                        PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: ComplexPokemon(pokemon: starterData))
+                        
+                        PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0])
                         
                         self.goingToNextScreen = true
                     }

@@ -29,10 +29,10 @@ struct PokedexView: View {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), spacing: 30) {
                     ForEach(1..<152) { id in
-                        NavigationLink(destination: PokemonDetailsView(PokeUtils.GetPokemonById(id: id))) {
-                            PokemonCardSmall(PokeUtils.GetPokemonById(id: id))
+                        NavigationLink(destination: PokemonDetailsView(PokeUtils.PokemonData.GetPokemonById(id: id))) {
+                            PokemonCardSmall(PokeUtils.PokemonData.GetPokemonById(id: id))
                         }
-                        .disabled(PokeUtils.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == id }) == nil)
+                        .disabled(PokeUtils.PokedexData.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == id }) == nil)
                     }
                 }
                 .padding(.top, 20)

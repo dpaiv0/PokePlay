@@ -27,8 +27,8 @@ struct PokemonCardSmall: View {
     
     func GetImageUrl() -> URL {
         // Check if the pokémon is on the user's Pokédex
-        if PokeUtils.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == pokemon.id }) != nil {
-            return PokeUtils.GetFrontPokemonSprite(id: pokemon.id)!
+        if PokeUtils.PokedexData.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == pokemon.id }) != nil {
+            return PokeUtils.PokemonData.GetFrontPokemonSprite(id: pokemon.id)!
         } else {
             return Bundle.main.url(forResource: "question-mark-pixelated", withExtension: "png")!
         }
@@ -49,6 +49,6 @@ struct PokemonCardSmall: View {
 
 struct PokemonCardSmall_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCardSmall(PokeUtils.GetPokemonById(id: 100))
+        PokemonCardSmall(PokeUtils.PokemonData.GetPokemonById(id: 100))
     }
 }
