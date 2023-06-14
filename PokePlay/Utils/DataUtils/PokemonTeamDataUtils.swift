@@ -38,11 +38,11 @@ struct PokemonTeamDataUtils {
         SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
     }
     
-    static func RemovePokemonFromTeam(pokemon: ComplexPokemon) {
+    static func RemovePokemonFromTeam(pokemon: ComplexPokemon) -> PokemonTeam {
         let pokemonTeam = GetPokemonTeamFromUserDefaults()
         
         if !pokemonTeam.pokemonList.contains(where: { $0.pokemon.id == pokemon.pokemon.id }) || pokemonTeam.pokemonList.count == 1 {
-            return
+            return pokemonTeam
         }
         
         var newPokemonTeam = pokemonTeam
@@ -53,6 +53,8 @@ struct PokemonTeamDataUtils {
         }
         
         SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
+        
+        return newPokemonTeam
     }
     
     static func GetPokemonTeamCount() -> Int {

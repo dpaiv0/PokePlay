@@ -14,6 +14,8 @@ struct PokemonTeamListView: View {
     @State private var showingDeleteAlert = false
     @State private var showingFavoriteAlert = false
     
+    @State private var cannotDeleteLastPokemonAlert = false
+    
     @State private var pokemonNickname = ""
     @State private var selectedPokemon: ComplexPokemon? = nil
     
@@ -92,6 +94,8 @@ struct PokemonTeamListView: View {
                             EditNickname()
                         }
                     }
+                    .alert(isPresented: $cannotDeleteLastPokemonAlert,
+                           content: { self.CantDeletePokemon() })
                 }
             }
         }
@@ -112,8 +116,27 @@ struct PokemonTeamListView: View {
     
     
     func DeletePokemon() {
-        print("delete")
+        
+        if
+            let pokemon = selectedPokemon
+        {
+            if PokeUtils.PokemonTeamData.GetPokemonTeamCount() == 1 {
+                cannotDeleteLastPokemonAlert.toggle()
+                return
+            }
+            
+            pokemonTeam = PokeUtils.PokemonTeamData.RemovePokemonFromTeam(pokemon: pokemon)
+        }
     }
+    
+    func CantDeletePokemon() -> Alert {
+        if let pokemon = selectedPokemon {
+            return Alert(title: Text("Can't release \(pokemon.getNickname())"), message: Text("You can't release your last Pokémon"), dismissButton: .default(Text("Got it!")))
+        }
+        
+        return Alert(title: Text("Can't release Pokémon"), message: Text("You can't release your last Pokémon"), dismissButton: .default(Text("Got it!")))
+        }
+    
     
     func FavoritePokemon() {
         if
