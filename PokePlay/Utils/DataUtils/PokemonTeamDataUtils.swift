@@ -41,12 +41,16 @@ struct PokemonTeamDataUtils {
     static func RemovePokemonFromTeam(pokemon: ComplexPokemon) {
         let pokemonTeam = GetPokemonTeamFromUserDefaults()
         
-        if !pokemonTeam.pokemonList.contains(where: { $0.pokemon.id == pokemon.pokemon.id }) {
+        if !pokemonTeam.pokemonList.contains(where: { $0.pokemon.id == pokemon.pokemon.id }) || pokemonTeam.pokemonList.count == 1 {
             return
         }
         
         var newPokemonTeam = pokemonTeam
         newPokemonTeam.pokemonList.removeAll(where: { $0.pokemon.id == pokemon.pokemon.id })
+        
+        if (newPokemonTeam.favoritePokemon?.pokemon.id == pokemon.pokemon.id) {
+            newPokemonTeam.favoritePokemon = nil
+        }
         
         SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
     }
@@ -86,6 +90,10 @@ struct PokemonTeamDataUtils {
         var newPokemonTeam = pokemonTeam
         newPokemonTeam.pokemonList.removeAll(where: { $0.pokemon.id == pokemon.pokemon.id })
         newPokemonTeam.pokemonList.append(pokemon)
+        
+        if (newPokemonTeam.favoritePokemon?.pokemon.id == pokemon.pokemon.id) {
+            newPokemonTeam.favoritePokemon = pokemon
+        }
         
         SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
         

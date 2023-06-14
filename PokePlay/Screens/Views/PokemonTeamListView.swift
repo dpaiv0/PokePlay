@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Combine
 
 struct PokemonTeamListView: View {
     @State private var showingEditAlert = false
@@ -55,7 +56,7 @@ struct PokemonTeamListView: View {
                                 showingDeleteAlert.toggle()
                                 selectedPokemon = pokemon
                             } label: {
-                                Label("Delete", systemImage: "trash")
+                                Label("Release", systemImage: "leaf")
                             }
                             
                             Button {
@@ -74,18 +75,19 @@ struct PokemonTeamListView: View {
                             }
                             .tint(Color.green)
                         }
-                        .confirmationDialog("Are you sure you want to delete \(pokemon.getNickname())?", isPresented: $showingDeleteAlert) {
-                            Button("Delete", role: .destructive) {
+                        .confirmationDialog("Are you sure you want to release \(pokemon.getNickname())?", isPresented: $showingDeleteAlert) {
+                            Button("Release", role: .destructive) {
                                 DeletePokemon()
                             }
                         } message:
                         {
-                            Text("Are you sure you want to delete \(pokemon.getNickname())?")
+                            Text("Are you sure you want to release \(pokemon.getNickname())?")
                         }
                     }
                     .alert("Edit \(selectedPokemon?.getNickname() ?? "Pokémon")'s nickname", isPresented: $showingEditAlert) {
-                                
+                        
                         TextField("Nickname", text: $pokemonNickname)
+                            .onReceive(Just(pokemonNickname)) { _ in limitText(15) }
                         Button("Submit") {
                             EditNickname()
                         }
@@ -102,6 +104,9 @@ struct PokemonTeamListView: View {
         {
             pokemon.setNickname(nickname: pokemonNickname)
             pokemonTeam = PokeUtils.PokemonTeamData.UpdatePokemonFromTeam(pokemon: pokemon)
+            
+            pokemonNickname = ""
+            print(pokemonTeam)
         }
     }
     
@@ -116,6 +121,12 @@ struct PokemonTeamListView: View {
         {
             
             pokemonTeam = PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: pokemon)
+        }
+    }
+    
+    func limitText(_ upper: Int) {
+        if pokemonNickname.count > upper {
+            pokemonNickname = String(pokemonNickname.prefix(upper))
         }
     }
 }

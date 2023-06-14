@@ -110,10 +110,12 @@ struct HomeScreen: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 50)
             }
+            .onAppear() {
+                favoritePokemon = PokeUtils.PokemonTeamData.GetFavoritePokemon() ?? PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0]
+            }
         }
     }
 }
-
 
 struct TabButton: View {
     var title: String
