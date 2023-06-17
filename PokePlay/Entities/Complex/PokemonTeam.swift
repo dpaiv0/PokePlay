@@ -22,6 +22,11 @@ struct ComplexPokemon : Codable {
         self.pokemon = pokemon
     }
     
+    init(pokemon: Pokemon, level: Int) {
+        self.pokemon = pokemon
+        self.level = level
+    }
+    
     private func getStatValue(statName: String) -> Int {
         return pokemon.stats.first(where: { $0.stat.name == statName })?.value ?? 0
     }

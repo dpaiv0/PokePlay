@@ -19,7 +19,8 @@ struct HomeScreen: View {
     
     @State private var screen: String = "wilderness"
     
-    @State private var favoritePokemon = PokeUtils.PokemonTeamData.GetFavoritePokemon() ?? PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0]
+    @State private var favoritePokemon = PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon() ?? nil
+    
     
     func GetScreen() -> AnyView {
         switch screen {
@@ -44,10 +45,10 @@ struct HomeScreen: View {
                 HStack(spacing: 0) {
                     HStack {
                         NavigationLink(destination: PokemonTeamListView()) {
-                            WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: starter), options: [.progressiveLoad])
+                            WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: favoritePokemon?.pokemon.id ?? 1), options: [.progressiveLoad])
                                 .resizable()
                                 .frame(width: 40, height: 40)
-                            Text("\(favoritePokemon.getNickname())\nLVL. \(favoritePokemon.level)")
+                            Text("\(favoritePokemon!.getNickname())\nLVL. \(favoritePokemon!.level)")
                                 .font(.caption)
                                 .multilineTextAlignment(.leading)
                             Spacer()

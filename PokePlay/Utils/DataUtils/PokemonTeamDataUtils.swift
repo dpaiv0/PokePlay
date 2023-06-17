@@ -82,6 +82,20 @@ struct PokemonTeamDataUtils {
         return pokemonTeam.favoritePokemon
     }
     
+    static func GetFavoriteOrFirstPokemon() -> ComplexPokemon? {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        
+        if let favoritePokemon = pokemonTeam.favoritePokemon {
+            return favoritePokemon
+        }
+        
+        if pokemonTeam.pokemonList.count > 0 {
+            return pokemonTeam.pokemonList[0]
+        }
+        
+        return nil
+    }
+    
     static func UpdatePokemonFromTeam(pokemon: ComplexPokemon) -> PokemonTeam {
         let pokemonTeam = GetPokemonTeamFromUserDefaults()
         

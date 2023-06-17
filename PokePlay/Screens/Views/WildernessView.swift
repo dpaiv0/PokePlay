@@ -40,6 +40,14 @@ struct WildernessView: View {
         }
     }
     
+    func StartFight() -> Void {
+        walking = false
+        
+        let pokemon = CpuFight.GetRandomPokemon()
+        
+        
+    }
+    
     var body: some View {
         VStack {
             Text("Walk through the\nWilderness to catch\nwild Pokémon!")
@@ -64,6 +72,7 @@ struct WildernessView: View {
             .padding(.bottom, 30)
             .onReceive(timer) { _ in
                 if (walking) {
+                    print(timeRemaining)
                     if timeRemaining > 0 {
                         timeRemaining -= 1
                     } else {
@@ -71,6 +80,7 @@ struct WildernessView: View {
                             timeRemaining -= 1
                         } else {
                             print("Time to Fight!")
+                            StartFight()
                             timer.upstream.connect().cancel()
                         }
                         timer.upstream.connect().cancel()

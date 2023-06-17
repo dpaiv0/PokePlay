@@ -58,16 +58,10 @@ struct SelectStarterScreen: View {
                 Button("Start Your Adventure!", action: {
                     if (starter == 0) { }
                     else {
-                        let starterData = PokeUtils.PokemonData.GetPokemonById(id: starter)
-                        
-                        PokeUtils.PokedexData.AppendPokemonToPokedex(pokemon: starterData)
-                        
-                        PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: ComplexPokemon(pokemon: starterData))
-                        
-                        PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0])
-                        
+                        selectStarter()
                         self.goingToNextScreen = true
                     }
+                    
                 })
                 .buttonStyle(.borderedProminent)
                 .disabled(starter == 0)
@@ -76,6 +70,16 @@ struct SelectStarterScreen: View {
             }
             .padding()
         }
+    }
+    
+    func selectStarter() {
+        let starterData = PokeUtils.PokemonData.GetPokemonById(id: starter)
+        
+        PokeUtils.PokedexData.AppendPokemonToPokedex(pokemon: starterData)
+        
+        PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: ComplexPokemon(pokemon: starterData))
+        
+        PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0])
     }
 }
 
