@@ -21,6 +21,9 @@
 		284156472A38A37B00FE5F19 /* PokemonTeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284156462A38A37B00FE5F19 /* PokemonTeamListView.swift */; };
 		284633062A349FC800ACECEC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633052A349FC800ACECEC /* Color.swift */; };
 		284633082A34ADF500ACECEC /* EvolutionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284633072A34ADF500ACECEC /* EvolutionChain.swift */; };
+		2862AEB22A40CE9400F793B0 /* PokeCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2862AEB12A40CE9400F793B0 /* PokeCenterView.swift */; };
+		2862AEB92A40D2E900F793B0 /* poke-center-healing-still.png in Resources */ = {isa = PBXBuildFile; fileRef = 2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */; };
+		2862AEBA2A40D2E900F793B0 /* poke-center-healing.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */; };
 		286B93152A3B6E6C00247EBE /* Weakness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B93142A3B6E6C00247EBE /* Weakness.swift */; };
 		287FF1702A3DCAF000D90B79 /* CpuFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FF16F2A3DCAF000D90B79 /* CpuFight.swift */; };
 		287FF1732A3DCBF000D90B79 /* PokemonFightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FF1722A3DCBF000D90B79 /* PokemonFightView.swift */; };
@@ -83,6 +86,9 @@
 		284156462A38A37B00FE5F19 /* PokemonTeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTeamListView.swift; sourceTree = "<group>"; };
 		284633052A349FC800ACECEC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		284633072A34ADF500ACECEC /* EvolutionChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChain.swift; sourceTree = "<group>"; };
+		2862AEB12A40CE9400F793B0 /* PokeCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCenterView.swift; sourceTree = "<group>"; };
+		2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poke-center-healing-still.png"; sourceTree = "<group>"; };
+		2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "poke-center-healing.gif"; sourceTree = "<group>"; };
 		286B93142A3B6E6C00247EBE /* Weakness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weakness.swift; sourceTree = "<group>"; };
 		287FF16F2A3DCAF000D90B79 /* CpuFight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuFight.swift; sourceTree = "<group>"; };
 		287FF1722A3DCBF000D90B79 /* PokemonFightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonFightView.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 			children = (
 				287FF1712A3DCBE200D90B79 /* Fights */,
 				282D98BC2A34E8500023616F /* WildernessView.swift */,
+				2862AEB12A40CE9400F793B0 /* PokeCenterView.swift */,
 				282D98C62A3500A50023616F /* PokedexView.swift */,
 				282D98CA2A3506610023616F /* PokemonDetailsView.swift */,
 				284156462A38A37B00FE5F19 /* PokemonTeamListView.swift */,
@@ -299,6 +306,8 @@
 		28B71E8D2A316045006BC32F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */,
+				2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */,
 				28B71E8E2A316045006BC32F /* tall-grass-walking.gif */,
 				28B71E8F2A316045006BC32F /* tall-grass-walking-still.png */,
 				28B71E902A316045006BC32F /* pokeplay-logo.png */,
@@ -429,6 +438,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2862AEB92A40D2E900F793B0 /* poke-center-healing-still.png in Resources */,
+				2862AEBA2A40D2E900F793B0 /* poke-center-healing.gif in Resources */,
 				28B71E962A316057006BC32F /* tall-grass-walking.gif in Resources */,
 				28B71E972A316057006BC32F /* tall-grass-walking-still.png in Resources */,
 				28B71E982A316057006BC32F /* pokeplay-logo.png in Resources */,
@@ -478,6 +489,7 @@
 				282D98C72A3500A50023616F /* PokedexView.swift in Sources */,
 				282D98BD2A34E8500023616F /* WildernessView.swift in Sources */,
 				282D98BA2A34BB710023616F /* HomeScreen.swift in Sources */,
+				2862AEB22A40CE9400F793B0 /* PokeCenterView.swift in Sources */,
 				28B71E782A313D91006BC32F /* StartingScreen.swift in Sources */,
 				28B71E7A2A314580006BC32F /* SelectCharacterScreen.swift in Sources */,
 				28A196DF2A3496E70080AC1D /* PokemonType.swift in Sources */,

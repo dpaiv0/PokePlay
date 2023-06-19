@@ -9,15 +9,18 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PokemonFightView: View {
-    @State var pokemon: ComplexPokemon
+    
+    init(_ pokemon: ComplexPokemon) {
+        self.pokemon = pokemon
+    }
+    
+    private var pokemon: ComplexPokemon = ComplexPokemon(pokemon: PokeUtils.PokemonData.GetPokemonById(id: 1))
     
     @State private var text = ""
     
     @State private var timeRemaining = 2
     
-    init(_ pokemon: ComplexPokemon) {
-        self.pokemon = pokemon
-    }
+    @State private var runPressed = false
     
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -27,8 +30,10 @@ struct PokemonFightView: View {
         self.text = text
     }
     
-    @State private var currentlyBattlingPokemon = PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon()
+    @State private var currentlyBattlingPokemon = ComplexPokemon(pokemon: PokeUtils.PokemonData.GetPokemonById(id: 1))
     
+    @Environment(\.presentationMode) var presentation
+
     var body: some View {
         VStack {
             VStack {
@@ -42,39 +47,35 @@ struct PokemonFightView: View {
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                     
-                    Text("Lv. \(pokemon.level)")
+                    Text("LVL. \(pokemon.level)")
                         .font(.headline)
                         .fontWeight(.regular)
                         .multilineTextAlignment(.center)
                     
-                    ProgressView(value: Float(pokemon.getHp() / pokemon.getHp()))
-                        .accentColor(Float(pokemon.getHp() / pokemon.getHp()) <= 0.5 ? (
-                            Float(pokemon.getHp() / pokemon.getHp()) <= 0.25 ? .red : .yellow
-                        ) : .green)
+                    ProgressView(value: pokemon.getCurrentHp(), total: Double(pokemon.getBaseHp()))
+                        .accentColor(.green)
                         .frame(width: 100)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 
                 
                 VStack {
-                    WebImage(url: PokeUtils.PokemonData.GetBackPokemonSprite(id: currentlyBattlingPokemon?.pokemon.id ?? 1), options: [.progressiveLoad])
+                    WebImage(url: PokeUtils.PokemonData.GetBackPokemonSprite(id: currentlyBattlingPokemon.pokemon.id), options: [.progressiveLoad])
                         .resizable()
                         .frame(width: 150, height: 150)
                     
-                    Text(currentlyBattlingPokemon?.pokemon.name.capitalized ?? "")
+                    Text(currentlyBattlingPokemon.getNickname())
                         .font(.title2)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                     
-                    Text("Lv. \(currentlyBattlingPokemon?.level ?? 1)")
+                    Text("LVL. \(currentlyBattlingPokemon.level)")
                         .font(.headline)
                         .fontWeight(.regular)
                         .multilineTextAlignment(.center)
                     
-                    ProgressView(value: Float((currentlyBattlingPokemon?.getHp() ?? 1) / (currentlyBattlingPokemon?.getHp() ?? 1)))
-                        .accentColor(Float(currentlyBattlingPokemon?.getHp() ?? 1 / (currentlyBattlingPokemon?.getHp() ?? 1)) <= 0.5 ? (
-                            Float(currentlyBattlingPokemon?.getHp() ?? 1 / (currentlyBattlingPokemon?.getHp() ?? 1)) <= 0.25 ? .red : .yellow
-                        ) : .green)
+                    ProgressView(value: currentlyBattlingPokemon.getCurrentHp(), total: Double(currentlyBattlingPokemon.getBaseHp()))
+                        .accentColor(.green)
                         .frame(width: 100)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -97,51 +98,46 @@ struct PokemonFightView: View {
             VStack {
                 HStack {
                     Button {
-                        
+                        // runPressed = true
                     } label: {
                         Text("Fight")
-                            .frame(maxWidth: 75)
+                            .frame(maxWidth: 100)
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .disabled(!buttonsEnabled)
-                    .padding()
                     
                     Button {
-                        
+                        // actions[1].action()
                     } label: {
                         Text("Pokémon")
-                            .frame(maxWidth: 75)
+                            .frame(maxWidth: 100)
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .disabled(!buttonsEnabled)
-                    .padding()
-                    
                     
                 }
                 HStack {
                     Button {
-                        
+                        // actions[2].action()
                     } label: {
-                        Text("Item")
-                            .frame(maxWidth: 75)
+                        Text("Bag")
+                            .frame(maxWidth: 100)
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .disabled(!buttonsEnabled)
-                    .padding()
                     
                     Button {
-                        
+                        runPressed = true
                     } label: {
                         Text("Run")
-                            .frame(maxWidth: 75)
+                            .frame(maxWidth: 100)
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .disabled(!buttonsEnabled)
-                    .padding()
                 }
             }
             .padding()
@@ -150,14 +146,37 @@ struct PokemonFightView: View {
             
         }
         .onAppear() {
-            UpdateText("A wild \(pokemon.pokemon.name.capitalized) has appeared!\nWhat will \(currentlyBattlingPokemon?.pokemon.name.capitalized ?? "") do?")
+            currentlyBattlingPokemon = PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon()
+            
+            UpdateText("A wild \(pokemon.pokemon.name.capitalized) has appeared!\nWhat will \(currentlyBattlingPokemon.pokemon.name.capitalized) do?")
         }
+        .alert(isPresented: $runPressed) {
+            Alert(title: Text("Are you sure you want to run?"), message: Text("You will not be able to battle this Pokémon again."), primaryButton: .destructive(Text("Run")) {
+                let random = Int.random(in: 1...2)
+                
+                if random == 1 {
+                    UpdateText("You got away safely!")
+                    buttonsEnabled = false
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                } else {
+                    UpdateText("You couldn't get away!")
+                }
+                
+            }, secondaryButton: .cancel())
+        }
+//        .alert(isPresented: $pokemon.isFainted) {
+//            Alert(title: Text("Your Pokémon fainted!"), message: Text("You blacked out!"), dismissButton: .default(Text("OK")) {
+//                print("Fainted")
+//            })
+//        }
     }
     
-}
-
-struct PokemonFightView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonFightView(ComplexPokemon(pokemon: PokeUtils.PokemonData.GetPokemonById(id: 48), level: 5))
+    struct PokemonFightView_Previews: PreviewProvider {
+        static var previews: some View {
+            PokemonFightView(ComplexPokemon(pokemon: PokeUtils.PokemonData.GetPokemonById(id: 48), level: 5))
+        }
     }
 }

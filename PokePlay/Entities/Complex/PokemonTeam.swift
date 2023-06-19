@@ -17,14 +17,18 @@ struct ComplexPokemon : Codable {
     var level: Int = 1
     var xp: Int = 0
     var nickname: String? = nil
+    var currentHealth: Double = 0.0
+    var isFainted: Bool = false
     
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
+        self.currentHealth = Double(getBaseHp())
     }
     
     init(pokemon: Pokemon, level: Int) {
         self.pokemon = pokemon
         self.level = level
+        self.currentHealth = Double(getBaseHp())
     }
     
     private func getStatValue(statName: String) -> Int {
@@ -52,8 +56,12 @@ struct ComplexPokemon : Codable {
         return xp >= getLevelUpXp()
     }
     
-    func getHp() -> Int {
+    func getBaseHp() -> Int {
         return getStatValue(statName: "hp")
+    }
+    
+    func getCurrentHp() -> Double {
+        return currentHealth
     }
     
     func getAttack() -> Int {

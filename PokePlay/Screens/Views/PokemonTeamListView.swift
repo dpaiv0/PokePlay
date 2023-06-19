@@ -44,7 +44,7 @@ struct PokemonTeamListView: View {
                                     Text("Level \(pokemon.level)")
                                         .font(.subheadline)
                                     
-                                    Text("HP: \(pokemon.getHp())")
+                                    Text("HP: \(pokemon.getCurrentHp())/\(pokemon.getBaseHp())")
                                         .font(.subheadline)
                                     
                                     Text("Attack: \(pokemon.getAttack())")
@@ -96,6 +96,9 @@ struct PokemonTeamListView: View {
                     }
                     .alert(isPresented: $cannotDeleteLastPokemonAlert,
                            content: { self.CantDeletePokemon() })
+                }
+                .onAppear() {
+                    pokemonTeam = PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults()
                 }
             }
         }

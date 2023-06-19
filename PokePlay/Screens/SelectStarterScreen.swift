@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct SelectStarterScreen: View {
-    @AppStorage("starter") private var starter = 0
+    @State private var starter = 0
     @State private var goingToNextScreen = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -77,7 +77,7 @@ struct SelectStarterScreen: View {
         
         PokeUtils.PokedexData.AppendPokemonToPokedex(pokemon: starterData)
         
-        PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: ComplexPokemon(pokemon: starterData))
+        PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: ComplexPokemon(pokemon: starterData, level: 5))
         
         PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0])
     }

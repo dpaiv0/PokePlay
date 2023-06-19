@@ -19,8 +19,7 @@ struct HomeScreen: View {
     
     @State private var screen: String = "wilderness"
     
-    @State private var favoritePokemon = PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon() ?? nil
-    
+    @State private var favoritePokemon: ComplexPokemon = ComplexPokemon(pokemon: PokeUtils.PokemonData.GetPokemonById(id: 1))
     
     func GetScreen() -> AnyView {
         switch screen {
@@ -30,25 +29,35 @@ struct HomeScreen: View {
             // return AnyView(GymsView())
         case "wilderness":
             return AnyView(WildernessView(self))
-        case "pokecenter": break
-            // return AnyView(PokeCenterView())
+        case "pokecenter":
+            return AnyView(PokeCenterView(self))
         default:
             return AnyView(Text("Hello, world!"))
         }
         return AnyView(Text("Hello, world!"))
     }
     
+    @State private var pokemonFightView: PokemonFightView?
+    @State private var goToPokemonFightView = false
+    
+    func GoToFightView(_ fightView: PokemonFightView) -> Void {
+        pokemonFightView = fightView
+        goToPokemonFightView = true
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
+                NavigationLink(destination: pokemonFightView?.navigationBarBackButtonHidden(true), isActive: $goToPokemonFightView) { EmptyView() }
+                
                 // Header
                 HStack(spacing: 0) {
                     HStack {
                         NavigationLink(destination: PokemonTeamListView()) {
-                            WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: favoritePokemon?.pokemon.id ?? 1), options: [.progressiveLoad])
+                            WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: favoritePokemon.pokemon.id), options: [.progressiveLoad])
                                 .resizable()
                                 .frame(width: 40, height: 40)
-                            Text("\(favoritePokemon!.getNickname())\nLVL. \(favoritePokemon!.level)")
+                            Text("\(favoritePokemon.getNickname())\nLVL. \(favoritePokemon.level)")
                                 .font(.caption)
                                 .multilineTextAlignment(.leading)
                             Spacer()
@@ -110,9 +119,9 @@ struct HomeScreen: View {
                         }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 50)
-            }
-            .onAppear() {
-                favoritePokemon = PokeUtils.PokemonTeamData.GetFavoritePokemon() ?? PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0]
+                .onAppear() {
+                    favoritePokemon = PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon()
+                }
             }
         }
     }

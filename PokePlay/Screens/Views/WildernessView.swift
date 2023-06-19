@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct WildernessView: View {
-    @State var parent: HomeScreen? = nil
+    var parent: HomeScreen? = nil
     @State private var walking = false;
     
     @State var timeRemaining = 7
@@ -45,7 +45,11 @@ struct WildernessView: View {
         
         let pokemon = CpuFight.GetRandomPokemon()
         
+        let complexPokemon = ComplexPokemon(pokemon: pokemon, level: PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon().level)
         
+        let fightView = PokemonFightView(complexPokemon)
+        
+        self.parent?.GoToFightView(fightView)
     }
     
     var body: some View {

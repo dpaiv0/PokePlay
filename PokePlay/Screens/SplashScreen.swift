@@ -11,7 +11,6 @@ struct SplashScreen: View {
     @State private var jumpToStarting = false
     @State private var jumpToHome = false
     @State var timeRemaining = 2
-    @AppStorage("starter") private var starter = ""
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
@@ -25,7 +24,7 @@ struct SplashScreen: View {
                         if timeRemaining > 0 {
                             timeRemaining -= 1
                         } else {
-                            if (starter == "") {
+                            if (PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList.count == 0) {
                                 jumpToStarting = true
                             } else {
                                 jumpToHome = true

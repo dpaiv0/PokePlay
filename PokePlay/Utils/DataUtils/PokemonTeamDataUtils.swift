@@ -82,18 +82,14 @@ struct PokemonTeamDataUtils {
         return pokemonTeam.favoritePokemon
     }
     
-    static func GetFavoriteOrFirstPokemon() -> ComplexPokemon? {
+    static func GetFavoriteOrFirstPokemon() -> ComplexPokemon {
         let pokemonTeam = GetPokemonTeamFromUserDefaults()
         
         if let favoritePokemon = pokemonTeam.favoritePokemon {
             return favoritePokemon
         }
         
-        if pokemonTeam.pokemonList.count > 0 {
-            return pokemonTeam.pokemonList[0]
-        }
-        
-        return nil
+        return pokemonTeam.pokemonList[0]
     }
     
     static func UpdatePokemonFromTeam(pokemon: ComplexPokemon) -> PokemonTeam {
@@ -116,4 +112,21 @@ struct PokemonTeamDataUtils {
         return newPokemonTeam
     }
     
+    static func HealPokemonTeam() -> PokemonTeam {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        
+        var newPokemonTeam = pokemonTeam
+        
+        for (index, pokemon) in newPokemonTeam.pokemonList.enumerated() {
+            newPokemonTeam.pokemonList[index].currentHealth = Double(pokemon.getBaseHp())
+        }
+        
+        if (newPokemonTeam.favoritePokemon != nil) {
+            newPokemonTeam.favoritePokemon!.currentHealth = Double(newPokemonTeam.favoritePokemon!.getBaseHp())
+        }
+        
+        SavePokemonTeamToUserDefaults(pokemonTeam: newPokemonTeam)
+        
+        return newPokemonTeam
+    }
 }
