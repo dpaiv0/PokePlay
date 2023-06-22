@@ -9,11 +9,13 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PokemonCardSmall: View {
-    @State private var pokemon: Pokemon
+    private var pokemon: Pokemon
 
     init(_ pokemon: Pokemon) {
         self.pokemon = pokemon
     }
+    
+    @Environment(\.colorScheme) var colorScheme
     
     func GetId() -> String {
         if (1...9).contains(pokemon.id) {
@@ -30,15 +32,20 @@ struct PokemonCardSmall: View {
         if PokeUtils.PokedexData.GetPokedexFromUserDefaults().pokemonList.firstIndex(where: { $0.id == pokemon.id }) != nil {
             return PokeUtils.PokemonData.GetFrontPokemonSprite(id: pokemon.id)!
         } else {
-            return Bundle.main.url(forResource: "question-mark-pixelated", withExtension: "png")!
+            return Bundle.main.url(forResource: "question-mark-pixelated\(colorScheme == .dark ? "-white" : "")", withExtension: "png")!
         }
     }
     
     var body: some View {
         VStack {
-            WebImage(url: GetImageUrl(), options: [.progressiveLoad])
-                .resizable()
-                .frame(width: 80, height: 80)
+            AsyncImage(url: GetImageUrl()) { img in
+                img
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+            } placeholder: {
+                ProgressView()
+            }
             
             Text(GetId())
                 .font(.callout)

@@ -25,6 +25,7 @@
 		2862AEB92A40D2E900F793B0 /* poke-center-healing-still.png in Resources */ = {isa = PBXBuildFile; fileRef = 2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */; };
 		2862AEBA2A40D2E900F793B0 /* poke-center-healing.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */; };
 		286B93152A3B6E6C00247EBE /* Weakness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B93142A3B6E6C00247EBE /* Weakness.swift */; };
+		287E3F862A44FD15003F895B /* question-mark-pixelated-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 287E3F852A44FD15003F895B /* question-mark-pixelated-white.png */; };
 		287FF1702A3DCAF000D90B79 /* CpuFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FF16F2A3DCAF000D90B79 /* CpuFight.swift */; };
 		287FF1732A3DCBF000D90B79 /* PokemonFightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FF1722A3DCBF000D90B79 /* PokemonFightView.swift */; };
 		28A196D92A3496480080AC1D /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A196D82A3496480080AC1D /* Pokemon.swift */; };
@@ -90,6 +91,7 @@
 		2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poke-center-healing-still.png"; sourceTree = "<group>"; };
 		2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "poke-center-healing.gif"; sourceTree = "<group>"; };
 		286B93142A3B6E6C00247EBE /* Weakness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weakness.swift; sourceTree = "<group>"; };
+		287E3F852A44FD15003F895B /* question-mark-pixelated-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question-mark-pixelated-white.png"; sourceTree = "<group>"; };
 		287FF16F2A3DCAF000D90B79 /* CpuFight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuFight.swift; sourceTree = "<group>"; };
 		287FF1722A3DCBF000D90B79 /* PokemonFightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonFightView.swift; sourceTree = "<group>"; };
 		28A196D82A3496480080AC1D /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 		28B71E8D2A316045006BC32F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				287E3F852A44FD15003F895B /* question-mark-pixelated-white.png */,
 				2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */,
 				2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */,
 				28B71E8E2A316045006BC32F /* tall-grass-walking.gif */,
@@ -445,6 +448,7 @@
 				28B71E982A316057006BC32F /* pokeplay-logo.png in Resources */,
 				28B71E992A316057006BC32F /* pkmn-male-still.png in Resources */,
 				28B71E9A2A316057006BC32F /* pkmn-male.gif in Resources */,
+				287E3F862A44FD15003F895B /* question-mark-pixelated-white.png in Resources */,
 				28B71E9B2A316057006BC32F /* pkmn-female-still.png in Resources */,
 				28B71E9C2A316057006BC32F /* pkmn-female.gif in Resources */,
 				28B71E9D2A316057006BC32F /* question-mark-pixelated.png in Resources */,

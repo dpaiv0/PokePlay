@@ -64,7 +64,10 @@ struct WildernessView: View {
             
             WebImage(url: GetWalkingImage()!, options: [.progressiveLoad])
                 .resizable()
-                .frame(width: 200, height: 200)
+                .scaledToFit()
+                .frame(width: 275)
+            
+            
             
             Spacer()
             

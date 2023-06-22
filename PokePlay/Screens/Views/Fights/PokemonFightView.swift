@@ -141,8 +141,7 @@ struct PokemonFightView: View {
                 }
             }
             .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.init(hex: "#FAFAFA" ).clipShape(RoundedRectangle(cornerRadius: 20)))
+            .frame(maxWidth: .infinity)     
             
         }
         .onAppear() {
