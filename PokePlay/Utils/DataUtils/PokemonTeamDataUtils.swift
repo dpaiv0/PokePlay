@@ -129,4 +129,29 @@ struct PokemonTeamDataUtils {
         
         return newPokemonTeam
     }
+    
+    static func AllPokemonsFainted() -> Bool {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        
+        for pokemon in pokemonTeam.pokemonList {
+            if pokemon.currentHealth > 0 {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    static func GetFirstNotFaintedPokemon() -> ComplexPokemon? {
+        let pokemonTeam = GetPokemonTeamFromUserDefaults()
+        
+        for pokemon in pokemonTeam.pokemonList {
+            if pokemon.currentHealth > 0 {
+                return pokemon
+            }
+        }
+        
+        return nil
+    }
+    
 }

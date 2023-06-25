@@ -62,8 +62,8 @@
             filePath = "PokePlay/Screens/Views/WildernessView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "StartWalking()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "PokePlay/Screens/Views/Fights/PokemonFightView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "PokePlay/Screens/Views/WildernessView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "StartFight()"
             landmarkType = "7">
             <Locations>
@@ -194,69 +194,6 @@
             endingLineNumber = "44"
             landmarkName = "GoToFightView(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "071ACBAB-28D1-4984-A1C7-AA482D0F9840"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PokePlay/Screens/Views/Fights/PokemonFightView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "init(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "071ACBAB-28D1-4984-A1C7-AA482D0F9840 - 33cbeefda68660c8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of PokePlay.PokemonFightView.text : Swift.String"
-                  moduleName = "PokePlay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/davidpaiva/Documents/Programming/PokePlay/PokePlay/Screens/Views/Fights/PokemonFightView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "071ACBAB-28D1-4984-A1C7-AA482D0F9840 - 615a9ce638f180fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PokePlay.PokemonFightView.init(PokePlay.ComplexPokemon) -&gt; PokePlay.PokemonFightView"
-                  moduleName = "PokePlay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/davidpaiva/Documents/Programming/PokePlay/PokePlay/Screens/Views/Fights/PokemonFightView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "296">
-               </Location>
-               <Location
-                  uuid = "071ACBAB-28D1-4984-A1C7-AA482D0F9840 - 615a9ce638f180fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PokePlay.PokemonFightView.init(PokePlay.ComplexPokemon) -&gt; PokePlay.PokemonFightView"
-                  moduleName = "PokePlay"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/davidpaiva/Documents/Programming/PokePlay/PokePlay/Screens/Views/Fights/PokemonFightView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "732">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

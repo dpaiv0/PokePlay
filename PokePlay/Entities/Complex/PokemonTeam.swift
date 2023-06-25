@@ -18,7 +18,6 @@ struct ComplexPokemon : Codable {
     var xp: Int = 0
     var nickname: String? = nil
     var currentHealth: Double = 0.0
-    var isFainted: Bool = false
     
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
@@ -45,6 +44,26 @@ struct ComplexPokemon : Codable {
     func addXp(xp: Int) -> ComplexPokemon {
         var newPokemon = self
         newPokemon.xp += xp
+        
+        while (newPokemon.canLevelUp()) {
+            newPokemon = newPokemon.levelUp()
+        }
+        
+        PokeUtils.PokemonTeamData.UpdatePokemonFromTeam(pokemon: newPokemon)
+        
+        return newPokemon
+    }
+    
+    func heal(_ hp: Double) -> ComplexPokemon {
+        var newPokemon = self
+        newPokemon.currentHealth += hp
+        
+        if (newPokemon.currentHealth > Double(getBaseHp())) {
+            newPokemon.currentHealth = Double(getBaseHp())
+        }
+        
+        PokeUtils.PokemonTeamData.UpdatePokemonFromTeam(pokemon: newPokemon)
+        
         return newPokemon
     }
     
@@ -111,5 +130,18 @@ struct ComplexPokemon : Codable {
     
     func isFavorite() -> Bool {
         return pokemon.id == PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().favoritePokemon?.pokemon.id
+    }
+    
+    func setCurrentHealth(currentHealth: Double) -> ComplexPokemon {
+        var newPokemon = self
+        newPokemon.currentHealth = currentHealth
+        
+        PokeUtils.PokemonTeamData.UpdatePokemonFromTeam(pokemon: newPokemon)
+        
+        return newPokemon
+    }
+    
+    func isFainted() -> Bool {
+        return currentHealth <= 0
     }
 }

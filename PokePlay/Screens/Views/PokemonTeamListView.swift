@@ -44,7 +44,7 @@ struct PokemonTeamListView: View {
                                     Text("Level \(pokemon.level)")
                                         .font(.subheadline)
                                     
-                                    Text("HP: \(pokemon.getCurrentHp())/\(pokemon.getBaseHp())")
+                                    Text("HP: \(Int(pokemon.getCurrentHp()))/\(pokemon.getBaseHp())")
                                         .font(.subheadline)
                                     
                                     Text("Attack: \(pokemon.getAttack())")

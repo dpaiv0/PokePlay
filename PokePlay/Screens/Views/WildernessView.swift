@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct WildernessView: View {
     var parent: HomeScreen? = nil
     @State private var walking = false;
+    @State private var canNotBattle = false;
     
     @State var timeRemaining = 7
     
@@ -25,6 +26,11 @@ struct WildernessView: View {
     }
     
     func StartWalking() -> Void {
+        if (PokeUtils.PokemonTeamData.AllPokemonsFainted()) {
+            canNotBattle = true
+            return
+        }
+        
         walking = true
         
         let randomInt = Int.random(in: 3..<8)
@@ -43,11 +49,7 @@ struct WildernessView: View {
     func StartFight() -> Void {
         walking = false
         
-        let pokemon = CpuFight.GetRandomPokemon()
-        
-        let complexPokemon = ComplexPokemon(pokemon: pokemon, level: PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon().level)
-        
-        let fightView = PokemonFightView(complexPokemon)
+        let fightView = PokemonFightView()
         
         self.parent?.GoToFightView(fightView)
     }
@@ -66,8 +68,6 @@ struct WildernessView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 275)
-            
-            
             
             Spacer()
             
@@ -94,6 +94,9 @@ struct WildernessView: View {
                     }
                 }
             }
+        }
+        .alert(isPresented: $canNotBattle) {
+            Alert(title: Text("You can't battle!"), message: Text("You need to have at least one Pokémon that isn't fainted to battle!"), dismissButton: .default(Text("OK")))
         }
     }
 }

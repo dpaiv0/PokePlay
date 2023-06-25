@@ -25,6 +25,8 @@
 		2862AEB92A40D2E900F793B0 /* poke-center-healing-still.png in Resources */ = {isa = PBXBuildFile; fileRef = 2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */; };
 		2862AEBA2A40D2E900F793B0 /* poke-center-healing.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */; };
 		286B93152A3B6E6C00247EBE /* Weakness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B93142A3B6E6C00247EBE /* Weakness.swift */; };
+		286C05C52A48A5E700F42FE7 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286C05C42A48A5E700F42FE7 /* Bag.swift */; };
+		286C05C82A48A7E800F42FE7 /* ModalView in Frameworks */ = {isa = PBXBuildFile; productRef = 286C05C72A48A7E800F42FE7 /* ModalView */; };
 		287E3F862A44FD15003F895B /* question-mark-pixelated-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 287E3F852A44FD15003F895B /* question-mark-pixelated-white.png */; };
 		287FF1702A3DCAF000D90B79 /* CpuFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FF16F2A3DCAF000D90B79 /* CpuFight.swift */; };
 		287FF1732A3DCBF000D90B79 /* PokemonFightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FF1722A3DCBF000D90B79 /* PokemonFightView.swift */; };
@@ -91,6 +93,7 @@
 		2862AEB72A40D2E900F793B0 /* poke-center-healing-still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poke-center-healing-still.png"; sourceTree = "<group>"; };
 		2862AEB82A40D2E900F793B0 /* poke-center-healing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "poke-center-healing.gif"; sourceTree = "<group>"; };
 		286B93142A3B6E6C00247EBE /* Weakness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weakness.swift; sourceTree = "<group>"; };
+		286C05C42A48A5E700F42FE7 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
 		287E3F852A44FD15003F895B /* question-mark-pixelated-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "question-mark-pixelated-white.png"; sourceTree = "<group>"; };
 		287FF16F2A3DCAF000D90B79 /* CpuFight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuFight.swift; sourceTree = "<group>"; };
 		287FF1722A3DCBF000D90B79 /* PokemonFightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonFightView.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B71EA32A31F164006BC32F /* SDWebImageSwiftUI in Frameworks */,
+				286C05C82A48A7E800F42FE7 /* ModalView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +184,7 @@
 			children = (
 				282D98C22A34F27E0023616F /* Pokedex.swift */,
 				282D98CC2A35372A0023616F /* PokemonTeam.swift */,
+				286C05C42A48A5E700F42FE7 /* Bag.swift */,
 			);
 			path = Complex;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			name = PokePlay;
 			packageProductDependencies = (
 				28B71EA22A31F164006BC32F /* SDWebImageSwiftUI */,
+				286C05C72A48A7E800F42FE7 /* ModalView */,
 			);
 			productName = PokePlay;
 			productReference = 28B71E412A312787006BC32F /* PokePlay.app */;
@@ -424,6 +430,7 @@
 			mainGroup = 28B71E382A312787006BC32F;
 			packageReferences = (
 				28B71EA12A31F164006BC32F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				286C05C62A48A7E800F42FE7 /* XCRemoteSwiftPackageReference "modal-view" */,
 			);
 			productRefGroup = 28B71E422A312787006BC32F /* Products */;
 			projectDirPath = "";
@@ -507,6 +514,7 @@
 				287FF1702A3DCAF000D90B79 /* CpuFight.swift in Sources */,
 				284156412A388F0C00FE5F19 /* PokedexDataUtils.swift in Sources */,
 				284633082A34ADF500ACECEC /* EvolutionChain.swift in Sources */,
+				286C05C52A48A5E700F42FE7 /* Bag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +841,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		286C05C62A48A7E800F42FE7 /* XCRemoteSwiftPackageReference "modal-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/diniska/modal-view";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		28B71EA12A31F164006BC32F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -844,6 +860,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		286C05C72A48A7E800F42FE7 /* ModalView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 286C05C62A48A7E800F42FE7 /* XCRemoteSwiftPackageReference "modal-view" */;
+			productName = ModalView;
+		};
 		28B71EA22A31F164006BC32F /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 28B71EA12A31F164006BC32F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
