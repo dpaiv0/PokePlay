@@ -15,7 +15,6 @@ struct HomeScreen: View {
     @AppStorage("starter") private var starter = 0;
     @AppStorage("gender") private var gender = "male";
     @AppStorage("name") private var name = "";
-    @AppStorage("currency") private var currency = 100;
     
     @State private var screen: String = "wilderness"
     
@@ -73,7 +72,7 @@ struct HomeScreen: View {
                     
                     HStack {
                         Spacer()
-                        Text("\(name)\n\(currency) ₽")
+                        Text("\(name)")
                             .font(.caption)
                             .multilineTextAlignment(.trailing)
                         WebImage(url: Bundle.main.url(forResource: "pkmn-\(gender)-still", withExtension: "png")!, options: [.progressiveLoad])

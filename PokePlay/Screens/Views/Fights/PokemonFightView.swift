@@ -288,11 +288,11 @@ struct PokemonFightView: View {
                 
                 
                 if pokemon.isFainted() {
-                    UpdateText("\(currentlyBattlingPokemon.getNickname().capitalized) defeated \(pokemon.pokemon.name.capitalized)!")
+                    let randomXP = Int.random(in: 50...100)
+                    
+                    UpdateText("\(currentlyBattlingPokemon.getNickname().capitalized) defeated \(pokemon.pokemon.name.capitalized) and gained \(randomXP) XP!")
                     
                     pokemon.setCurrentHealth(currentHealth: 0.0)
-                    
-                    let randomXP = Int.random(in: 50...100)
                     
                     currentlyBattlingPokemon.addXp(xp: randomXP)
                     
