@@ -24,8 +24,8 @@ struct HomeScreen: View {
         switch screen {
         case "pokedex":
             return AnyView(PokedexView(self))
-        case "gyms": break
-            // return AnyView(GymsView())
+        case "gyms":
+            return AnyView(GymsView(self))
         case "wilderness":
             return AnyView(WildernessView(self))
         case "pokecenter":
@@ -33,7 +33,6 @@ struct HomeScreen: View {
         default:
             return AnyView(Text("Hello, world!"))
         }
-        return AnyView(Text("Hello, world!"))
     }
     
     @State private var pokemonFightView: PokemonFightView?
