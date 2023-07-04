@@ -8,17 +8,14 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct SelectStarterScreen: View {
-    @State private var starter = 0
-    @State private var goingToNextScreen = false
+struct SelectStarterScreenView: View {
     @Environment(\.colorScheme) var colorScheme
-    
-    private var starters = [1, 4, 7]
+    @StateObject private var viewModel = SelectStarterScreenViewModel()
     
     var body: some View {
         NavigationStack {
             
-            NavigationLink(destination: HomeScreen().toolbar(.hidden), isActive: $goingToNextScreen) {
+            NavigationLink(destination: HomeScreenView().toolbar(.hidden), isActive: $viewModel.goingToNextScreen) {
                 EmptyView()
             }
             
@@ -30,7 +27,7 @@ struct SelectStarterScreen: View {
                 
                 HStack() {
                     
-                    ForEach(starters, id: \.self) { starter in
+                    ForEach(viewModel.starters, id: \.self) { starter in
                         VStack() {
                             WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: starter), options: [.progressiveLoad])
                                 .frame(width: 90, height: 50)
@@ -44,47 +41,34 @@ struct SelectStarterScreen: View {
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(colorScheme == .dark ? .white : .black, lineWidth: self.starter == starter ? 5 : 0)
+                                .stroke(colorScheme == .dark ? .white : .black, lineWidth: self.viewModel.starter == starter ? 5 : 0)
                         )
                         .frame(width: 120, height: 100)
                         .aspectRatio(contentMode: .fit)
                         .onTapGesture {
-                            self.starter = starter
+                            self.viewModel.starter = starter
                         }
                     }
                 }
                 .padding()
                 
                 Button("Start Your Adventure!", action: {
-                    if (starter == 0) { }
+                    if (viewModel.starter == 0) { }
                     else {
-                        selectStarter()
-                        self.goingToNextScreen = true
+                        viewModel.selectStarter()
                     }
-                    
                 })
                 .buttonStyle(.borderedProminent)
-                .disabled(starter == 0)
+                .disabled(viewModel.starter == 0)
                 .padding(.top, 200)
-                
             }
             .padding()
         }
-    }
-    
-    func selectStarter() {
-        let starterData = PokeUtils.PokemonData.GetPokemonById(id: starter)
-        
-        PokeUtils.PokedexData.AppendPokemonToPokedex(pokemon: starterData)
-        
-        PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: ComplexPokemon(pokemon: starterData, level: 5))
-        
-        PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults().pokemonList[0])
     }
 }
 
 struct SelectStarterScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectStarterScreen()
+        SelectStarterScreenView()
     }
 }

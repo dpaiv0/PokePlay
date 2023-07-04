@@ -19,9 +19,17 @@ struct GymCardSmall: View {
         self.isUnlocked = isUnlocked
     }
     
+    func GetImageUrl() -> URL {
+        if (SettingsUtils.GetSetting(key: "render_badges") as! Bool) {
+            return gym.badge.GetSprite()
+        } else {
+            return gym.gymLeader.GetSprite()
+        }
+    }
+    
     var body: some View {
         HStack {
-            WebImage(url: gym.badge.GetSprite(), options: [.progressiveLoad])
+            WebImage(url: GetImageUrl(), options: [.progressiveLoad])
                 .resizable()
                 .colorMultiply(!isUnlocked ? Color.gray : Color.white)
                 .grayscale(!isUnlocked ? 1 : 0)

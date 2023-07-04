@@ -11,13 +11,13 @@ import SDWebImageSwiftUI
 struct PokeCenterView: View {
     
     @State private var healing = false
-    @State private var parent: HomeScreen?
+    @State private var parent: HomeScreenViewModel?
     
     init() {
         self.parent = nil
     }
     
-    init(_ parent: HomeScreen) {
+    init(_ parent: HomeScreenViewModel) {
         self.parent = parent
     }
     

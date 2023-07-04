@@ -178,6 +178,8 @@ struct PokemonFightView: View {
                                             if pokemon.getCurrentHp() < 20 {
                                                 UpdateText("You caught \(pokemon.getNickname())!")
                                                 
+                                                buttonsEnabled = false
+                                                
                                                 PokeUtils.PokemonTeamData.AppendPokemonToTeam(pokemon: pokemon)
                                                 
                                                 PokeUtils.PokedexData.AppendPokemonToPokedex(pokemon: pokemon.pokemon)

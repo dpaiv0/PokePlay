@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct PokedexView: View {
-    @State var parent: HomeScreen? = nil
+    @State var parent: HomeScreenViewModel? = nil
     
     init() {
         self.parent = nil
     }
     
-    init(_ parent: HomeScreen) {
+    init(_ parent: HomeScreenViewModel) {
         self.parent = parent
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct WildernessView: View {
-    var parent: HomeScreen? = nil
+    var parent: HomeScreenViewModel? = nil
     @State private var walking = false;
     @State private var canNotBattle = false;
     
@@ -21,7 +21,7 @@ struct WildernessView: View {
         self.parent = nil
     }
     
-    init(_ parent: HomeScreen) {
+    init(_ parent: HomeScreenViewModel) {
         self.parent = parent
     }
     

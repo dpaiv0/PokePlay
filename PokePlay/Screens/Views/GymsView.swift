@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct GymsView: View {
-    @State var parent: HomeScreen? = nil
+    @State var parent: HomeScreenViewModel? = nil
     
     @State private var isActive = false
     
@@ -17,7 +17,7 @@ struct GymsView: View {
         self.parent = nil
     }
     
-    init(_ parent: HomeScreen) {
+    init(_ parent: HomeScreenViewModel) {
         self.parent = parent
     }
     
@@ -46,7 +46,7 @@ struct GymsView: View {
                 
                 ScrollView {
                     ForEach(KantoGyms.gyms, id: \.name) { gym in
-                        NavigationLink(destination: HomeScreen()) {
+                        NavigationLink(destination: HomeScreenView()) {
                             GymCardSmall(gym, isUnlocked: IsGymUnlocked(gym))
                         }
                         .disabled(!IsGymUnlocked(gym))

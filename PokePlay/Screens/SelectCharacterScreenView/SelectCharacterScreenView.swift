@@ -8,35 +8,32 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct SelectCharacterScreen: View {
-    @State private var goingToNextScreen = false
-    @State private var genders = ["Male", "Female"]
-    @AppStorage("name") private var name = ""
-    @AppStorage("gender") private var gender = "male"
+struct SelectCharacterScreenView: View {
+    @StateObject private var viewModel = SelectCharacterScreenViewModel()
     
     var body: some View {
         NavigationStack {
             VStack {
-                NavigationLink(destination: SelectStarterScreen().toolbar(.hidden), isActive: $goingToNextScreen) { EmptyView() }
+                NavigationLink(destination: SelectStarterScreenView().toolbar(.hidden), isActive: $viewModel.goingToNextScreen) { EmptyView() }
                 
                 Text("Select your character")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 150.0)
                 
-                AnimatedImage(url: Bundle.main.url(forResource: "pkmn-\(gender)", withExtension: "gif")!, options: [.progressiveLoad])
+                AnimatedImage(url: Bundle.main.url(forResource: "pkmn-\(viewModel.gender)", withExtension: "gif")!, options: [.progressiveLoad])
                     .frame(width: 200, height: 200, alignment: .center)
                     .foregroundColor(.accentColor)
                 
                 Form {
-                    Picker("Gender", selection: $gender) {
-                        ForEach(genders, id: \.self.localizedLowercase) {
+                    Picker("Gender", selection: $viewModel.gender) {
+                        ForEach(viewModel.genders, id: \.self.localizedLowercase) {
                             Text($0)
                         }
                     }
                     .pickerStyle(.segmented)
                     
-                    TextField("Name", text: $name)
+                    TextField("Name", text: $viewModel.name)
                         .autocorrectionDisabled(true)
                 }
                 .foregroundColor(.accentColor)
@@ -45,13 +42,13 @@ struct SelectCharacterScreen: View {
                 
                 
                 Button("Select Your Starter", action: {
-                    if (name.isEmpty) { }
+                    if (viewModel.name.isEmpty) { }
                     else {
-                        self.goingToNextScreen = true
+                        self.viewModel.emitSave()
                     }
                 })
                 .buttonStyle(.borderedProminent)
-                .disabled(name.isEmpty)
+                .disabled(viewModel.name.isEmpty)
             }
             
         }
@@ -62,6 +59,6 @@ struct SelectCharacterScreen: View {
 
 struct SelectCharacterScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCharacterScreen()
+        SelectCharacterScreenView()
     }
 }

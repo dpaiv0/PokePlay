@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct StartingScreen: View {
-    @State private var goingToNextScreen = false
+struct StartingScreenView: View {
+    @StateObject private var viewModel = StartingScreenViewModel()
     
     var body: some View {
         NavigationStack {
             VStack {
-                NavigationLink(destination: SelectCharacterScreen().toolbar(.hidden), isActive: $goingToNextScreen) { EmptyView() }
+                NavigationLink(destination: SelectCharacterScreenView().toolbar(.hidden), isActive: $viewModel.goingToNextScreen) { EmptyView() }
                 
                 
                 Image("pokeplay-logo")
@@ -30,9 +30,9 @@ struct StartingScreen: View {
                 Text("A Pokémon-like game for iOS!")
                     .font(.title2)
                 
-                NavigationLink(destination: SelectCharacterScreen().navigationBarHidden(true)) {
+                NavigationLink(destination: SelectCharacterScreenView().navigationBarHidden(true)) {
                     Button("Get Started", action: {
-                        self.goingToNextScreen = true
+                        self.viewModel.goingToNextScreen = true
                     })
                     .padding(.top, 250.0)
                     .buttonStyle(.borderedProminent)
@@ -46,6 +46,6 @@ struct StartingScreen: View {
 
 struct StartingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StartingScreen()
+        StartingScreenView()
     }
 }
