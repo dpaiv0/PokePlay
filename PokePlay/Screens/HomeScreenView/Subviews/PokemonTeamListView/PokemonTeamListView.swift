@@ -10,16 +10,7 @@ import SDWebImageSwiftUI
 import Combine
 
 struct PokemonTeamListView: View {
-    @State private var showingEditAlert = false
-    @State private var showingDeleteAlert = false
-    @State private var showingFavoriteAlert = false
-    
-    @State private var cannotDeleteLastPokemonAlert = false
-    
-    @State private var pokemonNickname = ""
-    @State private var selectedPokemon: ComplexPokemon? = nil
-    
-    @State private var pokemonTeam = PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults()
+    @StateObject private var viewModel = PokemonTeamListViewModel()
     
     var body: some View {
         NavigationView {
@@ -30,7 +21,7 @@ struct PokemonTeamListView: View {
                 Spacer()
                 
                 List {
-                    ForEach(pokemonTeam.pokemonList, id: \.pokemon.id) { pokemon in
+                    ForEach(viewModel.pokemonTeam.pokemonList, id: \.pokemon.id) { pokemon in
                         HStack {
                             NavigationLink(destination: PokemonDetailsView(pokemon.pokemon).toolbar(.hidden)) {
                                 WebImage(url: PokeUtils.PokemonData.GetFrontPokemonSprite(id: pokemon.pokemon.id), options: [.progressiveLoad])
@@ -55,104 +46,52 @@ struct PokemonTeamListView: View {
                         }
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button(role: .destructive) {
-                                showingDeleteAlert.toggle()
-                                selectedPokemon = pokemon
+                                viewModel.showingDeleteAlert.toggle()
+                                viewModel.selectedPokemon = pokemon
                             } label: {
                                 Label("Release", systemImage: "leaf")
                             }
                             
                             Button {
-                                selectedPokemon = pokemon
-                                FavoritePokemon()
+                                viewModel.selectedPokemon = pokemon
+                                viewModel.FavoritePokemon()
                             } label: {
                                 Label(pokemon.isFavorite() ? "Unfavorite" : "Favorite", systemImage: pokemon.isFavorite() ? "star.slash" : "star")
                             }
                             .tint(Color.yellow)
                             
                             Button {
-                                showingEditAlert.toggle()
-                                selectedPokemon = pokemon
+                                viewModel.showingEditAlert.toggle()
+                                viewModel.selectedPokemon = pokemon
                             } label: {
                                 Label("Edit", systemImage: "pencil")
                             }
                             .tint(Color.green)
                         }
-                        .confirmationDialog("Are you sure you want to release \(pokemon.getNickname())?", isPresented: $showingDeleteAlert) {
+                        .confirmationDialog("Are you sure you want to release \(pokemon.getNickname())?", isPresented: $viewModel.showingDeleteAlert) {
                             Button("Release", role: .destructive) {
-                                DeletePokemon()
+                                viewModel.DeletePokemon()
                             }
                         } message:
                         {
                             Text("Are you sure you want to release \(pokemon.getNickname())?")
                         }
                     }
-                    .alert("Edit \(selectedPokemon?.getNickname() ?? "Pokémon")'s nickname", isPresented: $showingEditAlert) {
+                    .alert("Edit \(viewModel.selectedPokemon?.getNickname() ?? "Pokémon")'s nickname", isPresented: $viewModel.showingEditAlert) {
                         
-                        TextField("Nickname", text: $pokemonNickname)
-                            .onReceive(Just(pokemonNickname)) { _ in limitText(15) }
+                        TextField("Nickname", text: $viewModel.pokemonNickname)
+                            .onReceive(Just(viewModel.pokemonNickname)) { _ in viewModel.limitText(15) }
                         Button("Submit") {
-                            EditNickname()
+                            viewModel.EditNickname()
                         }
                     }
-                    .alert(isPresented: $cannotDeleteLastPokemonAlert,
-                           content: { self.CantDeletePokemon() })
+                    .alert(isPresented: $viewModel.cannotDeleteLastPokemonAlert,
+                           content: { self.viewModel.CantDeletePokemon() })
                 }
                 .onAppear() {
-                    pokemonTeam = PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults()
+                    viewModel.pokemonTeam = PokeUtils.PokemonTeamData.GetPokemonTeamFromUserDefaults()
                 }
             }
-        }
-    }
-    
-    func EditNickname()
-    {
-        if
-            var pokemon = selectedPokemon
-        {
-            pokemon.setNickname(nickname: pokemonNickname)
-            pokemonTeam = PokeUtils.PokemonTeamData.UpdatePokemonFromTeam(pokemon: pokemon)
-            
-            pokemonNickname = ""
-            print(pokemonTeam)
-        }
-    }
-    
-    
-    func DeletePokemon() {
-        
-        if
-            let pokemon = selectedPokemon
-        {
-            if PokeUtils.PokemonTeamData.GetPokemonTeamCount() == 1 {
-                cannotDeleteLastPokemonAlert.toggle()
-                return
-            }
-            
-            pokemonTeam = PokeUtils.PokemonTeamData.RemovePokemonFromTeam(pokemon: pokemon)
-        }
-    }
-    
-    func CantDeletePokemon() -> Alert {
-        if let pokemon = selectedPokemon {
-            return Alert(title: Text("Can't release \(pokemon.getNickname())"), message: Text("You can't release your last Pokémon"), dismissButton: .default(Text("Got it!")))
-        }
-        
-        return Alert(title: Text("Can't release Pokémon"), message: Text("You can't release your last Pokémon"), dismissButton: .default(Text("Got it!")))
-        }
-    
-    
-    func FavoritePokemon() {
-        if
-            let pokemon = selectedPokemon
-        {
-            
-            pokemonTeam = PokeUtils.PokemonTeamData.SetFavoritePokemon(pokemon: pokemon)
-        }
-    }
-    
-    func limitText(_ upper: Int) {
-        if pokemonNickname.count > upper {
-            pokemonNickname = String(pokemonNickname.prefix(upper))
         }
     }
 }

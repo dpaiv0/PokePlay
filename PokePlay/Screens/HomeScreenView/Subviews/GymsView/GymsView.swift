@@ -9,28 +9,14 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct GymsView: View {
-    @State var parent: HomeScreenViewModel? = nil
-    
-    @State private var isActive = false
+    @StateObject private var viewModel = GymsViewModel()
     
     init() {
-        self.parent = nil
+        self.viewModel.parent = nil
     }
     
     init(_ parent: HomeScreenViewModel) {
-        self.parent = parent
-    }
-    
-    func IsGymUnlocked(_ gym: Gym) -> Bool {
-        if (gym.name == "Pewter City Gym") {
-            return true
-        }
-        
-        if (BadgeUtils.HasBadge(badge: gym.badge)) {
-            return true
-        } else {
-            return false
-        }
+        self.viewModel.parent = parent
     }
     
     var body: some View {
@@ -47,9 +33,9 @@ struct GymsView: View {
                 ScrollView {
                     ForEach(KantoGyms.gyms, id: \.name) { gym in
                         NavigationLink(destination: HomeScreenView()) {
-                            GymCardSmall(gym, isUnlocked: IsGymUnlocked(gym))
+                            GymCardSmall(gym, isUnlocked: viewModel.IsGymUnlocked(gym))
                         }
-                        .disabled(!IsGymUnlocked(gym))
+                        .disabled(!viewModel.IsGymUnlocked(gym))
                     }
                 }
             }

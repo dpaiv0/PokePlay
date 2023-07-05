@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct PokedexView: View {
-    @State var parent: HomeScreenViewModel? = nil
+    @StateObject private var viewModel = PokedexViewModel()
     
     init() {
-        self.parent = nil
+        self.viewModel.parent = nil
     }
     
     init(_ parent: HomeScreenViewModel) {
-        self.parent = parent
+        self.viewModel.parent = parent
     }
     
     var body: some View {

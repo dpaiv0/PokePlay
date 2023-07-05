@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct UserPreferencesView: View {
-    @State private var renderBadges = SettingsUtils.GetSetting(key: "render_badges") as? Bool ?? true
-    
-    @State private var clearDataAlert = false
-    
-    @State private var goToStartingScreen = false
+    @StateObject private var viewModel = UserPreferencesViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: SplashScreenView().navigationBarHidden(true), isActive: $goToStartingScreen) { EmptyView() }
+                NavigationLink(destination: SplashScreenView().navigationBarHidden(true), isActive: $viewModel.goToStartingScreen) { EmptyView() }
                 
                 Text("User Preferences")
                     .font(.title)
@@ -27,21 +23,21 @@ struct UserPreferencesView: View {
                 Spacer()
                 
                 List {
-                    Toggle("Display Badges instead of Gym Leaders", isOn: $renderBadges)
-                        .onChange(of: renderBadges) { value in
-                            SettingsUtils.SetSetting(key: "render_badges", value: renderBadges)
+                    Toggle("Display Badges instead of Gym Leaders", isOn: $viewModel.renderBadges)
+                        .onChange(of: viewModel.renderBadges) { value in
+                            SettingsUtils.SetSetting(key: "render_badges", value: viewModel.renderBadges)
                         }
                     
                     Text("Clear Data")
                         .foregroundColor(.red)
                         .onTapGesture {
-                            clearDataAlert.toggle()
+                            viewModel.clearDataAlert.toggle()
                         }
                 }
-                .alert(isPresented: $clearDataAlert) {
+                .alert(isPresented: $viewModel.clearDataAlert) {
                     Alert(title: Text("Clear Data"), message: Text("Are you sure you want to clear all data?"), primaryButton: .destructive(Text("Yes"), action: {
                         SettingsUtils.ClearData()
-                        self.goToStartingScreen = true
+                        self.viewModel.goToStartingScreen = true
                     }), secondaryButton: .cancel())
                 }
             }
