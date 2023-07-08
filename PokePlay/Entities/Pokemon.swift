@@ -8,6 +8,7 @@
 import Foundation
 
 struct Pokemon: Codable {
+    let guid: String
     let id: Int
     let name: String
     let height: Int

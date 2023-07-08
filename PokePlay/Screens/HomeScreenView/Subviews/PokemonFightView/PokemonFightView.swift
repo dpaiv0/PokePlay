@@ -12,10 +12,19 @@ import ModalView
 struct PokemonFightView: View {
     @StateObject private var viewModel = PokemonFightViewModel()
     
+    @State var pokemonList: [ComplexPokemon]?
+    @State var gym: Gym?
+    
     @Environment(\.presentationMode) var presentation
     
     init() {
         self.viewModel.parent = self
+    }
+    
+    init(_ pokemonList: [ComplexPokemon], _ gym: Gym) {
+        self.viewModel.parent = self
+        self.pokemonList = pokemonList
+        self.gym = gym
     }
     
     var body: some View {
@@ -211,6 +220,10 @@ struct PokemonFightView: View {
                 
             }
             .onAppear() {
+                if (pokemonList != nil) {
+                    viewModel.pokemon = pokemonList![0]
+                }
+                
                 viewModel.currentlyBattlingPokemon = PokeUtils.PokemonTeamData.GetFavoriteOrFirstPokemon()
                 
                 if viewModel.currentlyBattlingPokemon.isFainted() {

@@ -54,16 +54,49 @@ final class PokemonFightViewModel : ObservableObject {
                 
                 
                 if pokemon.isFainted() {
-                    let randomXP = Int.random(in: 50...100)
-                    
-                    UpdateText("\(currentlyBattlingPokemon.getNickname().capitalized) defeated \(pokemon.pokemon.name.capitalized) and gained \(randomXP) XP!")
-                    
-                    pokemon.setCurrentHealth(currentHealth: 0.0)
-                    
-                    currentlyBattlingPokemon.addXp(xp: randomXP)
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.parent?.presentation.wrappedValue.dismiss()
+                    if parent?.pokemonList != nil {
+                        UpdateText("\(pokemon.pokemon.name) has fainted!")
+                        
+                        pokemon.setCurrentHealth(currentHealth: 0.0)
+                        
+                        if (parent!.pokemonList!.count) > 1 {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+                                parent!.pokemonList!.remove(at: parent!.pokemonList!.firstIndex(where: { $0.pokemon.guid == pokemon.pokemon.guid })!)
+                                
+                                pokemon = parent!.pokemonList![0]
+                                
+                                UpdateText("What will \(pokemon.getNickname().capitalized) do?")
+                                
+                                buttonsEnabled = true
+                                
+                                firstActionText = "Fight"
+                                secondActionText = "Pokémon"
+                                thirdActionText = "Bag"
+                                fourthActionText = "Run"
+                            }
+                        } else {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+                                UpdateText("You have defeated \(parent!.gym!.gymLeader.name) and gained the \(parent!.gym!.badge.name)!")
+                                
+                                BadgeUtils.AddBadge(badge: parent!.gym!.badge)
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    self.parent?.presentation.wrappedValue.dismiss()
+                                }
+                            }
+                        }
+                    } else {
+                        let randomXP = Int.random(in: 50...100)
+                        
+                        UpdateText("\(currentlyBattlingPokemon.getNickname().capitalized) defeated \(pokemon.pokemon.name.capitalized) and gained \(randomXP) XP!")
+                        
+                        pokemon.setCurrentHealth(currentHealth: 0.0)
+                        
+                        currentlyBattlingPokemon.addXp(xp: randomXP)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            self.parent?.presentation.wrappedValue.dismiss()
+                        }
                     }
                 } else {
                     

@@ -32,7 +32,7 @@ struct GymsView: View {
                 
                 ScrollView {
                     ForEach(KantoGyms.gyms, id: \.name) { gym in
-                        NavigationLink(destination: HomeScreenView()) {
+                        NavigationLink(destination: GymsDetailView(gym)) {
                             GymCardSmall(gym, isUnlocked: viewModel.IsGymUnlocked(gym))
                         }
                         .disabled(!viewModel.IsGymUnlocked(gym))
