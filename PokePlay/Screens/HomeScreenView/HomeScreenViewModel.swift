@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 final class HomeScreenViewModel : ObservableObject {
-    @Published var tabButtonWidth: CGFloat = UIScreen.main.bounds.width / 4
+    @Published var tabButtonWidth: CGFloat = UIScreen.main.bounds.width / 3
     @Published var headerItemWidth: CGFloat = UIScreen.main.bounds.width / 3
     
     @Published var gender = "male";
@@ -32,8 +32,6 @@ final class HomeScreenViewModel : ObservableObject {
         switch screen {
         case "pokedex":
             return AnyView(PokedexView(self))
-        case "gyms":
-            return AnyView(GymsView(self))
         case "wilderness":
             return AnyView(WildernessView(self))
         case "pokecenter":

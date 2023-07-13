@@ -75,12 +75,6 @@ struct HomeScreenView: View {
                             viewModel.screen = "pokedex"
                         }
                     
-                    TabButton(title: "Gyms", iconName: "building.2.fill", selected: viewModel.screen == "gyms")
-                        .frame(width: viewModel.tabButtonWidth)
-                        .onTapGesture {
-                            viewModel.screen = "gyms"
-                        }
-                    
                     TabButton(title: "Poké Center", iconName: "cross.case.fill", selected: viewModel.screen == "pokecenter")
                         .frame(width: viewModel.tabButtonWidth)
                         .onTapGesture {
